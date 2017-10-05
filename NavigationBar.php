@@ -22,14 +22,8 @@
 				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> [0] Checkout</a></li>
 				<li class="active"><a href="index.php">Home</a></li>
 				<li><a href="#">Products</a></li>
-				<?php
-					if(!isset($_SESSION["login_user"])){
-						echo "<li><a href='login.php'>Login</a></li>";
-						echo "<li><a href='signup.php'>Sign Up</a></li>";
-					}else{
-						echo "<li><a href='#'> Logout </li>";
-					}
-				?>
+				<li><a href="#">Login</a></li>
+				<li><a href="signup.php">Sign Up</a></li>
 			</ul>
 
 			<!-- Its not possible to change the width without using 1% for Bootstrap 3.3.7 -->
@@ -49,6 +43,14 @@
 		</div>
 	</div>
 </nav>
+
+<!-- Sets Active tab on Nav Bar -->
+<script>	
+	$(document).ready(function() {
+		$('li.active').removeClass('active');
+		$('a[href="' + location.pathname.split("/")["2"] + '"]').closest('li').addClass('active'); 
+	});
+</script>
 
 <!-- Use this to center Brand Name instead
 <div id="navigation">

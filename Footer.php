@@ -19,7 +19,8 @@
 					<ul>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Products</a></li>
-						<li><a href="#">Login & Sign Up</a></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Sign Up</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
 				</div>
@@ -57,10 +58,3 @@
 		</div>
 	</div>
 </footer>
-
-<script>	
-	$(document).ready(function() {
-		$('li.active').removeClass('active');
-		$('a[href="' + location.pathname.split("/")["2"] + '"]').closest('li').addClass('active'); 
-	});
-</script>

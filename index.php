@@ -13,12 +13,12 @@
         <title>eMarketplace Portal System</title>
 
         <?php
-            include_once "./Header.php";
+            include_once "./Header.php"
         ?>
     </head>
     <body>
         <?php
-            include_once "./NavigationBar.php";
+            include_once "./NavigationBar.php"
         ?>
         
         <div class="content">
@@ -39,7 +39,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-							
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -57,6 +65,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -74,6 +91,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -91,6 +117,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,6 +146,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -128,6 +172,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -145,6 +198,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -162,6 +224,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,6 +253,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -199,6 +279,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -216,6 +305,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -233,6 +331,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,6 +360,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -270,6 +386,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -287,6 +412,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -304,6 +438,16 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -323,6 +467,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -340,6 +493,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -357,6 +519,15 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -374,14 +545,23 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+
+                            <div class="row">
+                                <div class="item col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h4>$10000.00</h4>
+                                </div>
+                                <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-		</div>
+        
         <?php
-            include_once "./Footer.php";
+            include_once "./Footer.php"
         ?>
     </body>
 </html>
