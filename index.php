@@ -13,12 +13,12 @@
         <title>eMarketplace Portal System</title>
 
         <?php
-            include_once "./Header.php"
+            include_once "./Header.php";
         ?>
     </head>
     <body>
         <?php
-            include_once "./NavigationBar.php"
+            include_once "./NavigationBar.php";
         ?>
         
         <div class="content">
@@ -39,15 +39,7 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
+							
                         </div>
                     </div>
                     
@@ -65,15 +57,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -91,15 +74,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -117,15 +91,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,15 +111,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -172,15 +128,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -198,15 +145,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -224,15 +162,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,15 +182,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -279,15 +199,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -305,15 +216,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -331,15 +233,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -360,15 +253,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -386,15 +270,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -412,15 +287,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -438,16 +304,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
@@ -467,15 +323,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -493,15 +340,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -519,15 +357,6 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
@@ -545,23 +374,14 @@
                             
                             <p class="list-group-item-text">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                     sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-
-                            <div class="row">
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h4>$10000.00</h4>
-                                </div>
-                                <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+		</div>
         <?php
-            include_once "./Footer.php"
+            include_once "./Footer.php";
         ?>
     </body>
 </html>
