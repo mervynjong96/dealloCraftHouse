@@ -1,11 +1,16 @@
 <HTML !DOCTYPE>
-	<?php
-            include_once "./Header.php"
-    ?>
-	
-			
-	<!-- Form validation Javascript -->
-   	<script src="assets/js/form_validation.js"></script>
+	<head>
+		
+		<title> eMarketplace Portal System Login</title>
+		
+		<?php
+				include_once "./Header.php"
+		?>
+
+
+		<!-- Form validation Javascript -->
+		<script src="assets/js/form_validation.js"></script>
+	</head>
 	
 	<body>
 		
@@ -45,11 +50,8 @@
 									
 									{cols:
 									 [
-										{view:"label",label:"<a href='#'> Forgot Password? </a>	"},
-										{view:"label",label:"<a href='#'> New User? </a>	",css:{"text-align":"center"},
-											 click:function(){
-												 window.location.href="signup.php";
-												}
+										{view:"label",label:"<a href='update_password.php'> Forgot Password? </a>	"},
+										{view:"label",label:"<a href='signup.php'> New User? </a>	",css:{"text-align":"center"},
 										},
 									 ]
 									},
