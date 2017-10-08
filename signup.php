@@ -132,7 +132,7 @@
 			function submit(){
 				var registerForm = $$("registerForm");
 				if(registerForm.validate())	{
-					webix.ajax().post("signup_process.php", registerForm.getValues(),
+					webix.ajax().post("process/signup_process.php", registerForm.getValues(),
 						function(text, data){
 							alert(text);					
 							if(text == "Registration Success")	

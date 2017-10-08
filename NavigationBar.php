@@ -30,7 +30,7 @@
 				<?php
 					if(isset($_SESSION["login_user"])){
 						echo "<li class='userID'> Hi, " . $_SESSION["login_user"] . " </li>";
-						echo "<li><a href='logout.php'> Logout </a></li>";
+						echo "<li><a href='process/logout_process.php'> Logout </a></li>";
 					
 					}else{
 						echo "<li><a href='login.php'>Login</a></li>";
@@ -61,8 +61,14 @@
 <!-- Sets Active tab on Nav Bar -->
 <script>	
 	$(document).ready(function() {
-		$('li.active').removeClass('active');
-		$('a[href="' + location.pathname.split("/")["2"] + '"]').closest('li').addClass('active'); 
+		//Get page name
+		var pathname = location.pathname.split("/");
+		pathname = pathname[pathname.length - 1];
+		
+		if(pathname !== 'index.php'){
+			$('li.active').removeClass('active');
+			$('a[href="' + pathname + '"]').closest('li').addClass('active'); 
+		}
 	});
 </script>
 

@@ -45,7 +45,7 @@
 
 											if($$("updatePasswordForm").validate()){
 				
-												webix.ajax().post("update_password_process.php", $$("updatePasswordForm").getValues(),
+												webix.ajax().post("process/update_password_process.php", $$("updatePasswordForm").getValues(),
 													function(text, data){
 														console.log("run");	
 														alert(text);					

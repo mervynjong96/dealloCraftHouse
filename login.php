@@ -58,7 +58,7 @@
 									{view:"button",id:"login_button",name:"login_button",value:"Login",width:100,
 										click:function(){
 											if($$("loginForm").validate()){
-													webix.ajax().post("login_process.php", $$("loginForm").getValues(),
+													webix.ajax().post("process/login_process.php", $$("loginForm").getValues(),
 													function(text, data){
 														alert(text);					
 														if(text == "Login Success")	
