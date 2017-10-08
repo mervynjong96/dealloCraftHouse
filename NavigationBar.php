@@ -30,7 +30,7 @@
 				<?php
 					if(isset($_SESSION["login_user"])){
 						echo "<li class='userID'> Hi, " . $_SESSION["login_user"] . " </li>";
-						echo "<li><a href='#'> Logout </li>";
+						echo "<li><a href='logout.php'> Logout </a></li>";
 					
 					}else{
 						echo "<li><a href='login.php'>Login</a></li>";

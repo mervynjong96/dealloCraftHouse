@@ -20,10 +20,10 @@
         <?php
             include_once "./NavigationBar.php"
         ?>
-        
+		
         <div class="content">
             <div class="container">
-                <h1>New & Fresh</h1>
+                <h1>New &amp; Fresh</h1>
                 <div class="row list-group">
                     <!-- Item 1 -->
                     <div class="item col-lg-3 col-md-3 col-sm-5 col-xs-8">
