@@ -19,8 +19,7 @@
 					<ul>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Products</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="#">FAQ</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
 				</div>

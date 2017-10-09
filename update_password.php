@@ -1,4 +1,4 @@
-<HTML !DOCTYPE>
+<!DOCTYPE html>
 	<head>
 		
 		<title> eMarketplace Portal System Forgot Password</title>
