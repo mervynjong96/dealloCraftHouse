@@ -40,23 +40,62 @@ ini_set( 'smtp_port', 25 );
 
 
 			if(mysqli_affected_rows($conn) > 0) {
-				/*$to = $email; //Send email to user
-				$subject = "Your password has been updated";
-				$message = "This email is to notify you that your account password on our website has been changed. Please contact our customer service if you did not perform this action. -----------
-				Customer service hotline: 1300-13-8989";
-				$headers = 'From:noreply@deallocrafthouse.com' . "\r\n";
-				mail($to, $subject, $message, $headers); // Send our email*/
 				
-				echo "Your password has been changed successfully";
+			require_once 'PHPMailer\PHPMailerAutoload.php';
+
+			$email_ID = "deallocrafthouse@gmail.com";
+			$password = "Deallo123456";
+			define ('GUSER',$email_ID);
+			define ('GPWD',$password);
+
+			$body = "<h1>Deallo Craft House</h1>";
+			$body .= "<h2>Password Recovery</h2>";
+			$body .= "<p>Your account password on our website has been changed.</p>";
+			$body .= "<p>Please contact our customer service (082-589387) if you did not perform this action.</p>";
+
+			$response = smtpmailer($email,'deallocrafthous1111e@gmail.com','Deallo Crafthouse','Password Recovery',$body);	
+			
+			if($response){
+				echo "Your password has been updated";
+			}else{
+				echo "Something wrong is going on, Please try again later";
 			}
-			// Return error message if login failed
-			else {
-				echo "Your account and/or password is incorrect, please try again";
-			}
+
 		}else{
 			echo "The email and/or old password you have entered is incorrect, please try again";
 		}
 		
 		mysqli_close($conn);
 	}
+}
+
+// make a separate file and include this file in that. call this function in that file.
+
+function smtpmailer($to, $from, $from_name, $subject, $body) { 
+	global $error;
+	$mail = new PHPMailer();  // create a new object
+	$mail->IsSMTP(); // enable SMTP
+	$mail->SMTPDebug = 2;  // debugging: 1 = errors and messages, 2 = messages only
+	$mail->SMTPAuth = true;  // authentication enabled
+	$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+	$mail->SMTPAutoTLS = false;
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587;
+
+	$mail->Username = GUSER;  
+	$mail->Password = GPWD;           
+	$mail->SetFrom($from, $from_name);
+	$mail->Subject = $subject;
+	$mail->IsHTML(true);
+	$mail->Body = $body;
+	$mail->AddAddress($to);
+	if(!$mail->Send()) {
+		$error = 'Mail error: '.$mail->ErrorInfo; 
+		return false;
+	} else {
+		$error = 'Message sent!';
+		return true;
+	}
+		
+}
 ?>
