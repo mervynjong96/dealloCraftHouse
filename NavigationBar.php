@@ -2,7 +2,7 @@
     Document:		NavigationBar.php
     Author: 		Aethylwyne
     Created: 		10/2/2017
-    Last Modified: 	10/4/2017
+    Last Modified: 	10/9/2017
 
     reminder: data-ng-app=""
 -->
@@ -19,7 +19,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>                        
 			</button>
-			<a class="navbar-brand" href="index.php">eMarketplace Portal System</a>
+			<a class="navbar-brand" href="index.php">Deallo Craft House</a>
 		</div>
 		<div class="navbar-collapse collapse" id="myNavbar">
 
