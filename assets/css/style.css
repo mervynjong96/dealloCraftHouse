@@ -185,6 +185,17 @@
     margin: 0 0 10px;
 }
 
+/* Product Details page CSS */
+.productdetail {
+    margin-top: 18px;
+}
+
+.productdetail img {
+    width: 100%;
+    min-height: 300px;
+    max-height: 400px;
+}
+
 /* Display login ID on navigation bar */
 
 .userID{

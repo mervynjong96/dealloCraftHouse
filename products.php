@@ -1,5 +1,5 @@
 <!--
-    Document:		index.php
+    Document:		products.php
     Author: 		Aethylwyne
     Created: 		10/7/2017
     Last Modified: 	10/10/2017

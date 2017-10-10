@@ -23,7 +23,7 @@
 		
         <div class="content">
             <div class="container">
-                <p>
+                <div>
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -69,7 +69,8 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                </p>
+                </div>
+            
                 <h1>New &amp; Fresh</h1>
                 <div class="row list-group">
                     <!-- Item 1 -->

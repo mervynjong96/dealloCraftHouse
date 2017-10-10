@@ -11,8 +11,8 @@
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 					<h3>Site Map</h3>
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Products</a></li>
+						<li><a href="/index.php">Home</a></li>
+						<li><a href="/products.php">Products</a></li>
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
