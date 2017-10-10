@@ -4,7 +4,7 @@
 		<title> eMarketplace Portal System Forgot Password</title>
 		
 		<?php
-				include_once "./Header.php"
+				include_once "./include/Header.php"
 		?>
 
 
@@ -15,7 +15,7 @@
 	<body>
 		
 		<?php
-            include_once "./NavigationBar.php"
+            include_once "./include/NavigationBar.php"
         ?>
 		
 		<div class="content">
@@ -86,7 +86,7 @@
 		</script>
 		
 		<?php
-            include_once "./Footer.php"
+            include_once "./include/Footer.php"
         ?>
 	</body>
 </HTML>
