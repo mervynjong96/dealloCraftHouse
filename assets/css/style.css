@@ -141,33 +141,47 @@
     margin-bottom: 12px;
 }
 
+/* Banner CSS */
+.bannerimg {
+    width: 100%;
+    min-height: 375px;
+    max-height: 500px;
+}
+
+
 /* Product & Item Grid CSS */
-.item {
+.product {
     margin-top: 10px;
     color: black;
 }
 
-.item a {
+.product a {
     text-decoration: none;
     color: black;
 }
 
-.item:hover {
+.product:hover {
     background: #ffe6d1;
 }
 
-.item a.btn {
+.product a.btn {
     color: whitesmoke;
 }
 
-.item .list-productpicture {
+.productimg {
+    width: 100%;
+    min-height: 175px;
+    max-height: 250px;
+}
+
+.product .list-productpicture {
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 0px;
     border-radius: 0px;
 }
 
-.item .list-productdetails {
+.product .list-productdetails {
     margin: 0 0 10px;
 }
 
