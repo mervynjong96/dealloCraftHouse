@@ -10,11 +10,6 @@
 		$sql_db
 	);
 
-// xampp code fix      
-ini_set( 'sendmail_from', "jctaurus503@gmail.co" ); 
-ini_set( 'SMTP', "mail.bigpond.com" );  
-ini_set( 'smtp_port', 25 );
-
 	session_start();
 
 	// Check if all fields are set with value
@@ -41,33 +36,32 @@ ini_set( 'smtp_port', 25 );
 
 			if(mysqli_affected_rows($conn) > 0) {
 				
-			require_once 'PHPMailer\PHPMailerAutoload.php';
+				require_once '..\assets\PHPMailer\PHPMailerAutoload.php';
 
-			$email_ID = "deallocrafthouse@gmail.com";
-			$password = "Deallo123456";
-			define ('GUSER',$email_ID);
-			define ('GPWD',$password);
+				$email_ID = "deallocrafthouse@gmail.com";
+				$password = "Deallo123456";
+				define ('GUSER',$email_ID);
+				define ('GPWD',$password);
 
-			$body = "<h1>Deallo Craft House</h1>";
-			$body .= "<h2>Password Recovery</h2>";
-			$body .= "<p>Your account password on our website has been changed.</p>";
-			$body .= "<p>Please contact our customer service (082-589387) if you did not perform this action.</p>";
+				$body = "<h1>Deallo Craft House</h1>";
+				$body .= "<h2>Password Recovery</h2>";
+				$body .= "<p>Your account password on our website has been changed.</p>";
+				$body .= "<p>Please contact our customer service (082-589387) if you did not perform this action.</p>";
 
-			$response = smtpmailer($email,'deallocrafthous1111e@gmail.com','Deallo Crafthouse','Password Recovery',$body);	
-			
-			if($response){
-				echo "Your password has been updated";
-			}else{
-				echo "Something wrong is going on, Please try again later";
+				smtpmailer($email,'deallocrafthous1111e@gmail.com','Deallo Crafthouse','Password Recovery',$body);	
+
+				
+					echo "Your password has been updated";
+				
+		
 			}
-
 		}else{
 			echo "The email and/or old password you have entered is incorrect, please try again";
 		}
 		
 		mysqli_close($conn);
 	}
-}
+
 
 // make a separate file and include this file in that. call this function in that file.
 
@@ -75,7 +69,7 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 	global $error;
 	$mail = new PHPMailer();  // create a new object
 	$mail->IsSMTP(); // enable SMTP
-	$mail->SMTPDebug = 2;  // debugging: 1 = errors and messages, 2 = messages only
+	//$mail->SMTPDebug = 2;  // debugging: 1 = errors and messages, 2 = messages only
 	$mail->SMTPAuth = true;  // authentication enabled
 	$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
 	$mail->SMTPAutoTLS = false;
@@ -90,10 +84,8 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 	$mail->Body = $body;
 	$mail->AddAddress($to);
 	if(!$mail->Send()) {
-		$error = 'Mail error: '.$mail->ErrorInfo; 
 		return false;
 	} else {
-		$error = 'Message sent!';
 		return true;
 	}
 		
