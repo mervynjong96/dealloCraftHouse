@@ -74,35 +74,38 @@
                 <h1>New &amp; Fresh</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product.php"
+                        include "./process/list_product_new.php"
                     ?>
                 </div>
                 
                 <h1>Editor's Choice</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product.php"
+                        include "./process/list_product_editorpick.php"
                     ?>
                 </div>
                 
                 <h1>Just For You!</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product.php"
+                        // include "./process/list_product.php"
+                        echo "<p>Looks empty right now! Why not buy some products first?</p>"
                     ?>
                 </div>
                 
                 <h1>Meet-ups</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product.php"
+                        // include "./process/list_product.php"
+                        echo "<p>CONSTRUCTION IN PROGRESS. PLEASE LEAVE THIS TO THE PROFESSIONALS.</p>"
                     ?>
                 </div>
                 
                 <h1>Community Tastemakers</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product.php"
+                        // include "./process/list_product.php"
+                        echo "<p>CONSTRUCTION IN PROGRESS. PLEASE LEAVE THIS TO THE PROFESSIONALS.</p>"
                     ?>
                 </div>
             </div>

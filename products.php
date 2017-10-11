@@ -30,24 +30,6 @@
                         include "./process/list_product.php"
                     ?>
                 </div>
-                
-                <div class="row list-group">
-                    <?php
-                        include "./process/list_product.php"
-                    ?>
-                </div>
-                
-                <div class="row list-group">
-                    <?php
-                        include "./process/list_product.php"
-                    ?>
-                </div>
-                
-                <div class="row list-group">
-                    <?php
-                        include "./process/list_product.php"
-                    ?>
-                </div>
             </div>
         </div>
         

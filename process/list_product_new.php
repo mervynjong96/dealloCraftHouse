@@ -12,8 +12,7 @@
 		$sql_db
 	);
 
-    $offset = 0;
-    $products = mysqli_query($conn, "SELECT * FROM products LIMIT $offset, 12");
+    $products = mysqli_query($conn, "SELECT * FROM products ORDER BY product_date_created DESC LIMIT 4");
 ?>
 
 <?php
