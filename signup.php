@@ -61,13 +61,13 @@
 							]
 						},
 						{
-							view:"richselect",
+							view:"combo",
 							id:"countriesSelect",
 							label:"Country",
 							name:"country_code",
 							required: true,
 							invalidMessage:"* Required",
-							options:{
+							suggest:{
 								body:{
 									data:countries,
 									yCount:10
