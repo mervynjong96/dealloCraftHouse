@@ -48,7 +48,7 @@
 				$body .= "<p>Your account password on our website has been changed.</p>";
 				$body .= "<p>Please contact our customer service (082-589387) if you did not perform this action.</p>";
 
-				smtpmailer($email,'deallocrafthous1111e@gmail.com','Deallo Crafthouse','Password Recovery',$body);	
+				smtpmailer($email,'deallocrafthouse@gmail.com','Deallo Crafthouse','Password Recovery',$body);	
 
 				
 					echo "Your password has been updated";

@@ -44,14 +44,32 @@
 									{view:"button",id:"update_button",name:"update_button",value:"Submit",width:100,align:"center",	click:function(){
 
 											if($$("updatePasswordForm").validate()){
-				
+												
+												$$("updatePasswordForm").disable();
+												$$("update_button").disable();
+												
+												$$("updatePasswordForm").showProgress({
+															type:"icon",
+															delay:2000,
+															hide:true
+														});
+												
+												
+												setTimeout(function(){
 												webix.ajax().post("process/update_password_process.php", $$("updatePasswordForm").getValues(),
 													function(text, data){
 														console.log("run");	
+														
 														alert(text);					
-														if(text == "Your password has been changed successfully")	
+														$$("updatePasswordForm").enable();
+														$$("update_button").enable();
+														
+														if(text == "Your password has been updated")	
 															window.location.replace("login.php");
-													});
+													},2000);
+												})
+												
+
 											}
 										}
 									}
@@ -82,7 +100,9 @@
 					}
 			]
 		});
-
+		
+		webix.extend($$("updatePasswordForm"),webix.ProgressBar);
+		
 		</script>
 		
 		<?php
