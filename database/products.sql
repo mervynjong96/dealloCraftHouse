@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2017 at 11:27 AM
+-- Generation Time: Oct 11, 2017 at 02:36 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -45,6 +45,15 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `product_date_created`, `product_price`, `product_color`, `product_size`, `product_shipping`, `product_policy`, `product_rating`, `product_tag`, `product_image`, `product_quantity_sold`) VALUES
+(1, 'Paperback 1', 'A cute fluffy companion to have some fun with! Please remember to visit http://foxesforsale.com for advice and tips on how to rear a fox.', '2017-10-11 06:53:16', '1500.00', 'Radiation Orange', 'Small (8.77lb)', 'Only available in Malaysia and Singapore.', 'No returns', '5.00', 'fox', 'assets/images/products/sample1.jpg', 5),
+(2, 'Ice Cream Soda', 'buymebuymebuymebuyme', '2017-10-11 07:56:34', '100.25', 'must be grey', 'lol idk', 'only in my.', 'stuff', '5.00', 'husky', 'assets/images/products/sample2.jpg', 2),
+(3, 'CAT CAKE', 'this is a lynx. it is the most annoying piece of cat in the world. dont buy, will not refund', '2017-10-11 07:58:54', '50.00', 'colorfull', 'M, L', 'Here', 'no polies', '1.50', 'lynx, evil', 'assets/images/products/sample3.jpg', 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -62,7 +71,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
