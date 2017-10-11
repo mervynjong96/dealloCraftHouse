@@ -24,12 +24,12 @@
     ?>
         <div class="item product col-lg-3 col-md-3 col-sm-5 col-xs-8">
             <div class="list-productpicture">
-                <a href="product_details.php">
+                <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
                     <img class="list-group-image productimg" src="./<?php echo $products["product_image"]; ?>" alt="Picture of <?php echo $products["product_name"]; ?>" />
                 </a>
             </div>
             <div class="list-productdetails">
-                <a href="product_details.php">
+                <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
                     <h4 class="list-group-item-heading"><?php echo $products["product_name"]; ?></h4>
                 </a>
 
@@ -40,7 +40,7 @@
                         <h4>$<?php echo $products["product_price"]; ?></h4>
                     </div>
                     <div class="item product col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <a class="btn btn-primary" href="product_details.php" value="<?php echo $products["product_id"]; ?>"><span class="glyphicon glyphicon-info-sign"></span> View</a>
+                        <a class="btn btn-primary" href="product_details.php?id=<?php echo $products["product_id"]; ?>"><span class="glyphicon glyphicon-info-sign"></span> View</a>
                     </div>
                 </div>
             </div>
