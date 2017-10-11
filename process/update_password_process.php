@@ -23,9 +23,9 @@ ini_set( 'smtp_port', 25 );
 		isset($_POST["oldPassword"]) 			&&
 		isset($_POST["newPassword"]) 
 	) {
-        $email = mysql_real_escape_string($_POST["email"]);
-        $oldPassword = mysql_real_escape_string($_POST["oldPassword"]);
-		$newPassword = mysql_real_escape_string($_POST["newPassword"]);
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $oldPassword = mysqli_real_escape_string($conn, $_POST["oldPassword"]);
+		$newPassword = mysqli_real_escape_string($conn, $_POST["newPassword"]);
    
 		$sql_table = "account";
 		

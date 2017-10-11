@@ -17,8 +17,8 @@
 		isset($_POST["email"]) 				&& 
 		isset($_POST["password"]) 			
 	) {
-        $email = mysql_real_escape_string($_POST["email"]);
-        $password = mysql_real_escape_string($_POST["password"]);
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]);
    
 		// Insert user authentication information into database
 		$sql_table = "account";

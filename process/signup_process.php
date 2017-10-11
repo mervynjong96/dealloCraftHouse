@@ -24,15 +24,15 @@
 		isset($_POST["shipping_address"]) 	&& 
 		isset($_POST["postcode"]) 
 	) {
-        $email = mysql_real_escape_string($_POST["email"]);
-        $userid = mysql_real_escape_string($_POST["userid"]);
-        $password = mysql_real_escape_string($_POST["password"]);
-        $name = mysql_real_escape_string($_POST["fname"] . " " . $_POST["lname"]);
-        $gender = mysql_real_escape_string($_POST["gender"]);
-        $country_code = mysql_real_escape_string($_POST["country_code"]);
-        $mobileNumber = mysql_real_escape_string($_POST["phone_code"] . $_POST["phone_number"]);
-        $shipping_address = mysql_real_escape_string($_POST["shipping_address"]);
-        $postcode = mysql_real_escape_string($_POST["postcode"]);    
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $userid = mysqli_real_escape_string($conn, $_POST["userid"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]);
+        $name = mysqli_real_escape_string($conn, $_POST["fname"] . " " . $_POST["lname"]);
+        $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
+        $country_code = mysqli_real_escape_string($conn, $_POST["country_code"]);
+        $mobileNumber = mysqli_real_escape_string($conn, $_POST["phone_code"] . $_POST["phone_number"]);
+        $shipping_address = mysqli_real_escape_string($conn, $_POST["shipping_address"]);
+        $postcode = mysqli_real_escape_string($conn, $_POST["postcode"]);    
 
 		// Insert user authentication information into database
 		$sql_table = "account";
