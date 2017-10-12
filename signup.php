@@ -4,6 +4,12 @@
     Created: 		10/2/2017
     Last Modified: 	10/5/2017
 -->
+<?php
+	session_start();
+	if(isset($_SESSION["login_user"])){
+		header("location:index.php");
+	}
+?>
 
 <!DOCTYPE html>
 <html>
