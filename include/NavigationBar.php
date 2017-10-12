@@ -16,7 +16,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> [0] Checkout</a></li>
-				<li class="active"><a href="/index.php">Home</a></li>
+				<li class="active"><a href="index.php">Home</a></li>
 				<li><a href="products.php">Products</a></li>
 				<?php
 					if(isset($_SESSION["login_user"])){
