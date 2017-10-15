@@ -133,7 +133,11 @@
         color: #ffe6d1;
         background-color: #d35400;
     }
+	
 }
+/*.navbar-nav > li > .dropdown-menu {    
+	background-color: #e7e7e7;  
+ }*/
 
 /* Content CSS */
 .content {
