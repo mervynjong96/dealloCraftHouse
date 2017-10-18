@@ -31,7 +31,7 @@
 		<div class="content">
 			<div class="container">
 				<h1>Sign Up</h1>
-				<div id="registerForm"></div>
+					<div id="registerForm"></div>
 				<br/>
 			</div>	
 		</div>
@@ -93,7 +93,7 @@
 					]
 				},
 				{
-					rows:[{view:"button", label:"Register", align:"center", width:100, click:"submit" }]
+					view:"button", label:"Register", align:"center", width:100, click:"submit"
 				}
 			];
 
