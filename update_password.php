@@ -1,4 +1,4 @@
-<HTML !DOCTYPE>
+<!DOCTYPE HTML>
 	<head>
 		
 		<title> eMarketplace Portal System Forgot Password</title>
@@ -36,14 +36,14 @@
 			var updatePasswordContent =[
 							{
 								rows:[
-									{view:"text",label:"Email",name:"email",id:"email",required:true,invalidMessage:"* Invalid Email",labelWidth: 140,
+									{view:"text",label:"Email",name:"email",id:"email",required:true,invalidMessage:"* Invalid Email",labelWidth: 180,
 							width:600,validate:webix.rules.isEmail},
-									{view:"text",label:"New Password",type:"password",name:"newPassword",required:true,invalidMessage:"* Password must between 6 and 10 characters",labelWidth: 140,
+									{view:"text",label:"New Password",type:"password",name:"newPassword",required:true,invalidMessage:"* Password must between 6 and 10 characters",labelWidth: 180,
 							width:600},
-									{ view:"text", type:"password", label:"Confirm New Password", name:"confirmPassword", required:true, invalidMessage:"* Password does not match" ,labelWidth: 140,
+									{ view:"text", type:"password", label:"Confirm New Password", name:"confirmPassword", required:true, invalidMessage:"* Password does not match" ,labelWidth: 180,
 							width:600},
 									{cols:[
-										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* Invalid Verification Code",labelWidth: 140,
+										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* Invalid Verification Code",labelWidth: 180,
 							width:600,validate:webix.rules.isNumber},
 										{view:"button",value:"Send verification code", width:170,
 										 	click:function(){
