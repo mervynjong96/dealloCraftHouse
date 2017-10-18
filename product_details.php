@@ -101,7 +101,7 @@
                         </p>
                         
                         <h3>Price</h3>
-                        <p><a class="btn btn-success" href="#">RM<?php echo $product["product_price"]; ?> - <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
+                        <p><a class="btn btn-success" href="#">$<?php echo $product["product_price"]; ?> - <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
                         
                         <p>Tags: <em><?php echo $product["product_tag"]; ?></em></p>
                     </div>
