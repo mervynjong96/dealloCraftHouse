@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2017 at 03:45 PM
+-- Generation Time: Oct 18, 2017 at 03:51 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `product_review` (
   `review_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `userid` varchar(12) NOT NULL,
+  `product_rating` int(1) NOT NULL,
   `review_desc` varchar(500) NOT NULL,
   `review_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
