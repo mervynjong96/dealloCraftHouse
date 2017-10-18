@@ -24,11 +24,22 @@
         <div class="content">
             <div class="container">
                 <h1>Products</h1>
-                
-                <div class="row list-group">
-                    <?php
-                        include "./process/list_product.php"
-                    ?>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">Category 1</a>
+                                <a href="#" class="list-group-item">Category 2</a>
+                                <a href="#" class="list-group-item">Category 3</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row list-group col-lg-9 col-md-9 col-sm-8 col-xs-12 well">
+                        <?php
+                            include "./process/list_product.php"
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

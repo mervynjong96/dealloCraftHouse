@@ -22,7 +22,7 @@
     <?php 
         foreach($products as $products) { 
     ?>
-        <div class="item product col-lg-3 col-md-3 col-sm-5 col-xs-8">
+        <div class="item product col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="list-productpicture">
                 <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
                     <img class="list-group-image productimg" src="./<?php echo $products["product_image"]; ?>" alt="Picture of <?php echo $products["product_name"]; ?>" />

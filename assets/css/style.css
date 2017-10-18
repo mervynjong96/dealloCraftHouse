@@ -152,7 +152,6 @@
     max-height: 500px;
 }
 
-
 /* Product & Item Grid CSS */
 .product {
     margin-top: 10px;
@@ -226,11 +225,23 @@
 	margin-left:50px;
 }
 
+/* profile.php & children css */
+.profiledirectory {
+    margin-top: 350px;
+    margin-bottom: 150px;
+    text-align: center;
+}
 
+.profiledirectory a {
+    text-decoration: none;
+    color: black;
+}
 
-
-
-
+.profiledirectory img {
+    height: 80%;
+    width: 80%;
+    margin-bottom: 15px;
+}
 
 
 
