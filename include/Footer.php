@@ -42,7 +42,7 @@
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<p class="pull-left">Copyright 2017 © eMarketplace Portal System</p>
+			<p class="pull-left">Copyright 2017 &copy; Deallo Craft House</p>
 			<ul class="nav nav-pills pull-right">
 				<li><i class="fa fa-cc-visa"></i></li>
 				<li><i class="fa fa-cc-mastercard"></i></li>
