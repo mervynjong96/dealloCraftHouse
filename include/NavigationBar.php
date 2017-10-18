@@ -20,9 +20,17 @@
 				<li><a href="products.php">Products</a></li>
 				<?php
 					if(isset($_SESSION["login_user"])){
-						echo "<li class='userID'> Hi, " . $_SESSION["login_user"] . " </li>";
-						echo "<li><a href='process/logout_process.php'> Logout </a></li>";
-					
+						echo "<li class='dropdown'>";
+						echo "<a href='#' class='userID dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'><span class='glyphicon glyphicon-user'></span> "
+							. $_SESSION["login_user"] . " <span class='caret'></span> </a>";
+						echo "<ul class='dropdown-menu'>";
+						echo "<li><a href='#'> <span class='glyphicon glyphicon-cog'> </span> Account Setting </a> </li>";
+						echo "<li class='divider'> </li>";
+						echo "<li><a href='process/logout_process.php'> <span class='glyphicon glyphicon-log-out'> </span> Logout </a></li>";
+						echo "</ul>";
+						echo "</li>";
+						
+
 					}else{
 						echo "<li><a href='login.php'>Login</a></li>";
 						// echo "<li><a href='signup.php'>Sign Up</a></li>";

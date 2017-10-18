@@ -133,7 +133,11 @@
         color: #ffe6d1;
         background-color: #d35400;
     }
+	
 }
+/*.navbar-nav > li > .dropdown-menu {    
+	background-color: #e7e7e7;  
+ }*/
 
 /* Content CSS */
 .content {
@@ -170,7 +174,7 @@
 
 .productimg {
     width: 100%;
-    min-height: 175px;
+    height: 175px;
     max-height: 250px;
 }
 
@@ -192,7 +196,7 @@
 
 .productdetail img {
     width: 100%;
-    min-height: 300px;
+    height: 300px;
     max-height: 400px;
 }
 

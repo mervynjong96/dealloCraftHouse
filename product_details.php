@@ -21,41 +21,89 @@
             include_once "./include/NavigationBar.php"
         ?>
         
+        <?php
+            // get method retrieves from database
+            $id = $_GET["id"];
+        
+            $host = "localhost";
+            $user = "root";
+            $pwd = "";
+            $sql_db = "deallocrafthouse";
+            $conn = @mysqli_connect(
+                $host,
+                $user,
+                $pwd,
+                $sql_db
+            );
+
+            $offset = 0;
+            $query = mysqli_query($conn, "SELECT * FROM products WHERE product_id = $id");
+            $product = mysqli_fetch_array($query);
+        ?>
+        
         <div class="content">
             <div class="container">
                 
                 <div class="well productdetail">
-                    <img class="img-responsive" src="./assets/images/steampic.png" alt="product" />
+                    <img class="img-responsive" src="./<?php echo $product["product_image"]; ?>" alt="Picture of <?php echo $product["product_name"]; ?>" />
                     <div>
-                        <h2>Product Name</h2>
+                        <h2><?php echo $product["product_name"]; ?></h2>
                         <p>
                             Reviews: 
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0
+                            <?php
+                                if ($product["product_rating"] == 5) {
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                                } else if ($product["product_rating"] >= 4) {
+                                    for ($i = 0; $i < 4; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                                    echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                } else if ($product["product_rating"] >= 3) {
+                                    for ($i = 0; $i < 3; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                                    echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                    echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                } else if ($product["product_rating"] >= 2) {
+                                    echo "<span class='glyphicon glyphicon-star'></span>";
+                                    echo "<span class='glyphicon glyphicon-star'></span>";
+                                    for ($i = 0; $i < 3; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                    }
+                                } else if ($product["product_rating"] >= 1) {
+                                    echo "<span class='glyphicon glyphicon-star'></span>";
+                                    for ($i = 0; $i < 4; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                    }
+                                } else {
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<span class='glyphicon glyphicon-star-empty'></span>";
+                                    }
+                                }
+                                echo " " . $product["product_rating"];
+                            ?>
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p><?php echo $product["product_desc"]; ?></p>
                         
                         <h3>Colors</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p><?php echo $product["product_color"]; ?></p>
                         
                         <h3>Sizes</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p><?php echo $product["product_size"]; ?></p>
                         
                         <h3>Shipping & Policies</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p>
+                            <?php echo $product["product_shipping"]; ?>
+                            <br/>
+                            <?php echo $product["product_policy"]; ?>
+                        </p>
                         
                         <h3>Price</h3>
-                        <p><a class="btn btn-success" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
+                        <p><a class="btn btn-success" href="#">$<?php echo $product["product_price"]; ?> - <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
                         
-                        <p>Tags: <em>eg, eg</em></p>
+                        <p>Tags: <em><?php echo $product["product_tag"]; ?></em></p>
                     </div>
                 </div>
                 

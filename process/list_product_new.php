@@ -31,9 +31,11 @@
                 <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
                     <h4 class="list-group-item-heading"><?php echo $products["product_name"]; ?></h4>
                 </a>
-
-                <p class="list-group-item-text" height="20px"><?php echo substrwords($products["product_desc"],100); ?></p>
-
+                
+                <!--
+                    <p class="list-group-item-text"><?php echo substrwords($products["product_desc"],100); ?></p>
+                -->
+                
                 <div class="row">
                     <div class="item product col-lg-8 col-md-8 col-sm-8 col-xs-8">
                         <h4>$<?php echo $products["product_price"]; ?></h4>

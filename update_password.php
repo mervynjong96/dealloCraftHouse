@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<HTML !DOCTYPE>
 	<head>
 		
 		<title> eMarketplace Portal System Forgot Password</title>
 		
 		<?php
-				include_once "./include/Header.php"
+				include_once "include/Header.php"
 		?>
 
 
@@ -15,7 +15,7 @@
 	<body>
 		
 		<?php
-            include_once "./include/NavigationBar.php"
+            include_once "include/NavigationBar.php"
         ?>
 		
 		<div class="content">
@@ -36,43 +36,41 @@
 			var updatePasswordContent =[
 							{
 								rows:[
-									{view:"text",label:"Email",name:"email",required:true,invalidMessage:"* Invalid Email",labelWidth:200},
-									{view:"text",label:"Old Password",type:"password",name:"oldPassword",required:true,invalidMessage:"* Password must between 6 and 10 characters",labelWidth:200},
-									{view:"text",label:"New Password",type:"password",name:"newPassword",required:true,invalidMessage:"* Password must between 6 and 10 characters",labelWidth:200},
-									
-									{ view:"text", type:"password", label:"Confirm New Password", name:"confirmPassword", required:true, invalidMessage:"* Password does not match",labelWidth:200 },
+									{view:"text",label:"Email",name:"email",id:"email",required:true,invalidMessage:"* Invalid Email",labelWidth: 140,
+							width:600,validate:webix.rules.isEmail},
+									{view:"text",label:"New Password",type:"password",name:"newPassword",required:true,invalidMessage:"* Password must between 6 and 10 characters",labelWidth: 140,
+							width:600},
+									{ view:"text", type:"password", label:"Confirm New Password", name:"confirmPassword", required:true, invalidMessage:"* Password does not match" ,labelWidth: 140,
+							width:600},
+									{cols:[
+										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* Invalid Verification Code",labelWidth: 140,
+							width:600,validate:webix.rules.isNumber},
+										{view:"button",value:"Send verification code", width:170,
+										 	click:function(){
+												if($$("email").validate()){
+													webix.ajax().post("process/verification_number_process.php",$$("updatePasswordForm").getValues(),
+															function(text,data){
+													
+															alert (text);
+													})
+												}
+											}
+										}
+									]},
 									{view:"button",id:"update_button",name:"update_button",value:"Submit",width:100,align:"center",	click:function(){
-
+										
 											if($$("updatePasswordForm").validate()){
-												
-												$$("updatePasswordForm").disable();
-												$$("update_button").disable();
-												
-												$$("updatePasswordForm").showProgress({
-															type:"icon",
-															delay:2000,
-															hide:true
-														});
-												
-												
-												setTimeout(function(){
+				
 												webix.ajax().post("process/update_password_process.php", $$("updatePasswordForm").getValues(),
 													function(text, data){
-														console.log("run");	
-														
 														alert(text);					
-														$$("updatePasswordForm").enable();
-														$$("update_button").enable();
-														
-														if(text == "Your password has been updated")	
+														if(text == "Your password has been changed successfully")	
 															window.location.replace("login.php");
-													},2000);
-												})
-												
-
+													});
 											}
 										}
 									}
+
 								]
 							}
 						];
@@ -85,14 +83,7 @@
 						view:"form",
 						borderless:true,
 						elements: updatePasswordContent,
-						elementsConfig:{
-							labelAlign:"right",
-							labelWidth: 140,
-							width:600
-						},
 						rules:{
-							"email": webix.rules.isEmail,
-							"oldPassword"          : function(value,data,name){ return validatePassword(value,data,name,this) },
 							"newPassword"          : function(value,data,name){ return validatePassword(value,data,name,this) },
 							"confirmPassword"     : function(value){ return this.getValues().newPassword === value }
 						},
@@ -100,13 +91,13 @@
 					}
 			]
 		});
-		
-		webix.extend($$("updatePasswordForm"),webix.ProgressBar);
+			
+		webix.extend($$("updatePasswordForm"),webix.ProgressBar);	
 		
 		</script>
 		
 		<?php
-            include_once "./include/Footer.php"
+            include_once "include/Footer.php"
         ?>
 	</body>
 </HTML>
