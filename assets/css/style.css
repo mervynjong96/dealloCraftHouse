@@ -228,9 +228,13 @@
 
 /* profile.php & children css */
 .profiledirectory {
-    margin-top: 350px;
+    margin-top: 175px;
     margin-bottom: 150px;
     text-align: center;
+}
+
+.profiledirectory h2 {
+    margin-bottom: 65px;
 }
 
 .profiledirectory a {
