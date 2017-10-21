@@ -42,7 +42,7 @@
                             </a>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <a href="#">
+                            <a href="product_add.php">
                                 <img src="./assets/images/sell.png" alt="" />
                                 <p>Add a Product</p>
                             </a>

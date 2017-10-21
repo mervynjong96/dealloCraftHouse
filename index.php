@@ -35,7 +35,7 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="./assets/images/steampic.png" alt="banner1" class="bannerimg" />
+                                <img src="./assets/images/sample.png" alt="banner1" class="bannerimg" />
                                 <div class="carousel-caption">
                                     <h3>Promotion 1</h3>
                                     <p>Promo caption</p>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="item">
-                                <img src="./assets/images/steampic.png" alt="banner2" class="bannerimg" />
+                                <img src="./assets/images/sample.png" alt="banner2" class="bannerimg" />
                                 <div class="carousel-caption">
                                     <h3>Editor Promo 1</h3>
                                     <p>Promo caption</p>
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="item">
-                                <img src="./assets/images/steampic.png" alt="banner3" class="bannerimg" />
+                                <img src="./assets/images/sample.png" alt="banner3" class="bannerimg" />
                                 <div class="carousel-caption">
                                     <h3>Promotion 2</h3>
                                     <p>Promo caption</p>
@@ -74,14 +74,16 @@
                 <h1>New &amp; Fresh</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product_new.php"
+                        include_once "./process/list_product.php";
+                        list_product(1);
                     ?>
                 </div>
                 
                 <h1>Editor's Choice</h1>
                 <div class="row list-group">
                     <?php
-                        include "./process/list_product_editorpick.php"
+                        include_once "./process/list_product.php";
+                        list_product(2);
                     ?>
                 </div>
                 

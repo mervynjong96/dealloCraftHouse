@@ -37,7 +37,8 @@
 
                     <div class="row list-group col-lg-9 col-md-9 col-sm-8 col-xs-12 well">
                         <?php
-                            include "./process/list_product.php"
+                            include_once "./process/list_product.php";
+                            list_product(0);
                         ?>
                     </div>
                 </div>

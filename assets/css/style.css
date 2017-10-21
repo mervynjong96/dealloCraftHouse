@@ -24,7 +24,7 @@
     background: #ee984d;
     padding-bottom: 30px;
     width: 100%;
-    border-bottom: 1px solid #d35400;
+    /* border-bottom: 1px solid #d35400; */
     color: #ecf0f1;
 }
 .footer a {
@@ -50,7 +50,7 @@
     display: block;
     margin: 0 auto;
 }
-
+/*
 .footer-bottom {
     background: #e67e22;
     padding-top: 10px;
@@ -63,6 +63,7 @@
 .footer-bottom ul li {
     font-size: 2em;
 }
+*/
 
 /* Alters navbar-default properties */
 .navbar-default {

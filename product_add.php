@@ -94,7 +94,7 @@
 								
 								if(!data.order || data.order.length === 0)
 								{
-									preview = "<img src='"+"assets/images/products/sample.png' height=200 width=200/>";
+									preview = "<img src='"+"assets/images/uploadsample.png' height=200 width=200/>";
 									preview += "<br/>";
 									preview += "<span style='display:inline-block; width:200px; text-align:center'>No image selected</span> ";
 								}
@@ -319,14 +319,14 @@
 					}
 					
 					productForm.setValues({ variation_number: variation_number},true)
-					webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
+					webix.ajax().post("process/product_add_process.php", productForm.getValues(),
 						function(text, data){
 							if(text == "success")
 							{
 								$$("imageUploader").send(function(response){
 									if(response.status == "server")
 									{
-										alert("product registered success");
+										alert("Product Registration Successful");
 										location.reload();
 									}
 								})								
