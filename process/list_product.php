@@ -58,7 +58,7 @@ function list_product($list,$filter) {
                 </div>
                 <div class="list-productdetails">
                     <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
-                        <h4 class="list-group-item-heading"><?php echo $products["product_name"]; ?></h4>
+                        <h4 class="list-group-item-heading"><?php echo substrwords($products["product_name"],30); ?></h4>
                     </a>
 
                     <!--

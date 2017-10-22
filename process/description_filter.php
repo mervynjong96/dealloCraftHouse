@@ -1,4 +1,5 @@
 <?php
+    // This function will cut down any text to a specified character limit but returns a full word if it detects a word is in the character limit and returns it with triple dots.
     function substrwords($text, $maxchar, $end='...') {
         if (strlen($text) > $maxchar || $text == '') {
             $words = preg_split('/\s/', $text);      

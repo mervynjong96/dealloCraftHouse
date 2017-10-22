@@ -193,9 +193,8 @@
 .productdetail {
     margin-top: 18px;
 }
-
 .productdetail img {
-    width: 100%;
+    width: 50%;
     height: 300px;
     max-height: 400px;
 }
