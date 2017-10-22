@@ -21,16 +21,26 @@
             include_once "./include/NavigationBar.php"
         ?>
         
+        <?php
+            // get method for filtering
+            $filter = $_GET["filter"];
+        ?>
+        
         <div class="content">
             <div class="container">
                 <h1>Products</h1>
+                <br/>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">Category 1</a>
-                                <a href="#" class="list-group-item">Category 2</a>
-                                <a href="#" class="list-group-item">Category 3</a>
+                                <a href="products.php?filter=1" class="list-group-item">Accessories & Clothing</a>
+                                <a href="products.php?filter=2" class="list-group-item">Bedding/Room Décor</a>
+                                <a href="products.php?filter=3" class="list-group-item">Craft Supplies</a>
+                                <a href="products.php?filter=4" class="list-group-item">Jewelry</a>
+                                <a href="products.php?filter=5" class="list-group-item">Soft Toys</a>
+                                <a href="products.php?filter=6" class="list-group-item">Vintage Arts</a>
+                                <a href="products.php?filter=7" class="list-group-item">Wedding Accessories</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +48,11 @@
                     <div class="row list-group col-lg-9 col-md-9 col-sm-8 col-xs-12 well">
                         <?php
                             include_once "./process/list_product.php";
-                            list_product(0);
+                            if (empty($filter)){
+                                list_product(0,0);
+                            } else {
+                                list_product(0,$filter);
+                            }
                         ?>
                     </div>
                 </div>

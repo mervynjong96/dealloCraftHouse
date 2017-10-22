@@ -75,7 +75,7 @@
                 <div class="row list-group">
                     <?php
                         include_once "./process/list_product.php";
-                        list_product(1);
+                        list_product(1,0);
                     ?>
                 </div>
                 
@@ -83,31 +83,31 @@
                 <div class="row list-group">
                     <?php
                         include_once "./process/list_product.php";
-                        list_product(2);
+                        list_product(2,0);
                     ?>
                 </div>
                 
                 <h1>Just For You!</h1>
                 <div class="row list-group">
                     <?php
-                        // include "./process/list_product.php"
-                        echo "<p>Looks empty right now! Why not buy some products first?</p>"
+                        include_once "./process/list_product.php";
+                        list_product(1,0);
                     ?>
                 </div>
                 
                 <h1>Meet-ups</h1>
                 <div class="row list-group">
                     <?php
-                        // include "./process/list_product.php"
-                        echo "<p>CONSTRUCTION IN PROGRESS. PLEASE LEAVE THIS TO THE PROFESSIONALS.</p>"
+                        include_once "./process/list_product.php";
+                        list_product(1,0);
                     ?>
                 </div>
                 
                 <h1>Community Tastemakers</h1>
                 <div class="row list-group">
                     <?php
-                        // include "./process/list_product.php"
-                        echo "<p>CONSTRUCTION IN PROGRESS. PLEASE LEAVE THIS TO THE PROFESSIONALS.</p>"
+                        include_once "./process/list_product.php";
+                        list_product(1,0);
                     ?>
                 </div>
             </div>
