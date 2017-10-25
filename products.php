@@ -21,11 +21,6 @@
             include_once "./include/NavigationBar.php"
         ?>
         
-        <?php
-            // get method for filtering
-            $filter = $_GET["filter"];
-        ?>
-        
         <div class="content">
             <div class="container">
                 <h1>Products</h1>
@@ -48,10 +43,10 @@
                     <div class="row list-group col-lg-9 col-md-9 col-sm-8 col-xs-12 well">
                         <?php
                             include_once "./process/list_product.php";
-                            if (empty($filter)){
+                            if (empty($_GET["filter"])){
                                 list_product(0,0);
                             } else {
-                                list_product(0,$filter);
+                                list_product(0,$_GET["filter"]);
                             }
                         ?>
                     </div>
