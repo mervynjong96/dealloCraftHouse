@@ -31,7 +31,7 @@
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <a href="#">
+                            <a href="profile_edit.php">
                                 <img src="./assets/images/profile.png" alt="" />
                                 <p>Profile Information</p>
                             </a>
