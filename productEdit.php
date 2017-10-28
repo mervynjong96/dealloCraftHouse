@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>eMarketplace Portal System</title>
+        <title>
+            <?php
+                if(!isset($_GET["id"]))
+                    echo "Add My Product";
+                else
+                    echo "Edit My Product";
+            ?>
+        </title>
 
         <?php
             include_once "./include/Header.php";
@@ -22,17 +29,69 @@
         
         <div class="content">
             <div class="container">
-				<h1 class="page-header">Add My Product</h1>
+				<h1 class="page-header" style='margin-bottom:0px;'>
+                    <?php
+                        if(!isset($_GET["id"]))
+                            echo "Add My Product";
+                        else
+                            echo "Edit My Product";
+                    ?>                    
+                </h1>
 				<div id="productRegisterForm"></div>
             </div>
         </div>		
 		
 		<script type="text/javascript" charset="utf-8">	
 			
+            /* The following is the predefined template used for preview upload images*/
+            var uploadTemp = function(data){
+                var preview = "";
+
+                if(!data.order || data.order.length === 0)
+                {
+                    preview = "<img src='"+"assets/images/products/sample.png' height=200 width=200/>";
+                    preview += "<br/>";
+                    preview += "<span style='display:inline-block; width:200px; text-align:center'>No image selected</span> ";
+                }
+
+                var suffix = ["","a","b","c","d","e"];
+                var removeLink = "";
+                if (data.each)
+                {
+                    data.each(function(obj){
+                        preview += "<img id='" + obj.id + "' ";
+                        /* if the image is read from file picker */
+                        if(obj.status == 'client')
+                        {
+                            var image = document.getElementById(obj.id);
+                            var reader  = new FileReader();
+
+                            reader.onloadend = function (e) {
+                                $("#"+obj.id).attr('src',e.target.result);
+                            }
+
+                            reader.readAsDataURL(obj.file);
+                        }
+                        /* if the image is read from server */
+                        else
+                        {
+                            preview += "src='assets/images/products/1/"+suffix[obj.id]+".jpg' ";
+                        }
+                        preview     += "height=200 width=200/> ";
+                        removeLink  += "<a href='javasript:;' onClick='removeImage("+ obj.id +")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
+                    });
+                    
+                    //Concatenate images with hyperlink of removal
+                    preview += "<br/>" + removeLink;
+                }
+                return preview;
+            }
+            
 			var productRegisterForm = [
 				{					
 					id:"formContent",
-					rows:[					
+					rows:[                        
+						{ template:"Product Images", type:"section" },
 						{ 
 							cols:[
 								{
@@ -40,8 +99,9 @@
 									width:140,
 									value: 'Upload Image(s)', 
 									autosend: false,
-									id:"imageUploader",
-									inputName:"imageUploader",
+									id:"product_images",
+									name:"product_images",
+									inputName:"product_images",
 									accept:"image/png, image/jpeg, image/jpg",
 									link:"uploadTemplate", 
 									upload:"process/upload_images.php",
@@ -89,36 +149,7 @@
 							autoheight:true,
 							id:"uploadTemplate",
 							borderless:true,
-							template:function(data){
-								var preview = "";
-								
-								if(!data.order || data.order.length === 0)
-								{
-									preview = "<img src='"+"assets/images/uploadsample.png' height=200 width=200/>";
-									preview += "<br/>";
-									preview += "<span style='display:inline-block; width:200px; text-align:center'>No image selected</span> ";
-								}
-								
-								if (data.each)
-								{
-									data.each(function(obj){
-										preview += "<img id='" + obj.id + "' height=200 width=200> ";
-										var reader  = new FileReader();
-										var image = document.getElementById(obj.id);
-
-										reader.onloadend = function (e) {
-											$("#"+obj.id).attr('src',e.target.result);
-										}
-
-										reader.readAsDataURL(obj.file);
-									});
-									preview += "<br/>";
-									data.each(function(obj){ 
-										preview += "<a href='javasript:;' onClick='removeImage("+ obj.id +")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
-									});
-								}
-								return preview;
-							}
+							template:uploadTemp
 						},
 						{ template:"Product Details", type:"section" },
 						{
@@ -146,8 +177,8 @@
 						},
 						{ view:"text", width:600, label:"Name", name:"product_name", required:true, invalidMessage:"* Required" },
 						{ view:"textarea", width:700, label:"Description", name:"product_desc", required:true, height:120, invalidMessage:"* Required" },
-						{ view:"text", label:"Stock Quantity", id:"stockQuantity", name:"product_stockQty", inputWidth:300 ,invalidMessage:"* Invalid input", required:true },
-						{ 
+						{ view:"text", label:"Stock Quantity", id:"stockQuantity", name:"product_stockQty", width:280,invalidMessage:"* Invalid input", required:true, attributes:{ type:"number", min:"0" } },
+						/*{ 
 							id:"variations",
 							rows:[
 								//Row(s) of variation will be added programmatically here after clicking on button of adding/removing a variation
@@ -160,14 +191,14 @@
 								{ view:"label", id:"btnAddVariation", label:"<a href='javascript:;'>[+] Add a product variation</a>", click:"addVariation", width:250 },
 								{ view:"label", id:"btnDelVariation", label:"<a href='javascript:;'>[-] Remove a product variation</a>", click:"delVariation", hidden:true, width:250 }
 							]							
-						},
+						},*/
 						{ 
 							cols:[
-								{ view: "text", label:"Weight", name:"product_weight", width:250, placeholder:"0.00", required:true, invalidMessage:"* Invalid input", },
+								{ view: "text", label:"Weight", name:"product_weight", width:280, placeholder:"0.00", required:true, invalidMessage:"* Invalid input", },
 								{ view: "label", label:"kg" }
 							]							
 						},		
-						{ view:"text", label:"Price", name:"product_price", width:250, placeholder:"0.00", required:true },
+						{ view:"text", label:"Price", name:"product_price", width:280, placeholder:"0.00", required:true },
 						{ view:"text", width:700, label:"Tag(s)", name:"product_tags", placeholder:"Separate by single whitespace (e.g. latest new cheap)" },
 						{ view:"textarea", width:700, label:"Product Policy", name:"product_policy", height:100, placeholder:"Remarks for Warranty/Refund Issue/Any Clarifications", required:true, invalidMessage:"* Required" },
 						/*
@@ -229,9 +260,9 @@
 			
 			function removeImage(imageID)
 			{
-				$$("imageUploader").files.data.remove(imageID);
+				$$("product_images").files.data.remove(imageID);
 			}			
-			
+			/*
 			var variation_number = 0;
 			var numVar = 0;
 			function addVariation(){						
@@ -294,45 +325,51 @@
 					$$("btnDelVariation").hide();
 					$$("stockQuantity").show();
 				}
-			}	
+			}	*/
 			
 			function submit(){
-				var productForm = $$("productRegisterForm");
-				var countImgUpload = $$("imageUploader").files.data.order.length;
+				//console.log($$("productRegisterForm").getValues());
+				
+                var productForm = $$("productRegisterForm");
+				var countImgUpload = $$("product_images").files.data.order.length;
 				var isFormValid = productForm.validate();				
 				if(countImgUpload > 0 && isFormValid)
 				{
-					/* Standardized naming of different product image(s) */
-					var data = $$("imageUploader").files.data.pull;
-					var count = 0;
-					var suffix = [];
-					suffix[0] = 'a';
-					suffix[1] = 'b';
-					suffix[2] = 'c';
-					suffix[3] = 'd';
-					suffix[4] = 'e';
-					for(var key in data)
+					// Standardized naming of different product image(s)
+					/*
+                    var data = $$("product_images").files.data.pull;
+					var count = 1;
+					var suffix = ['','a','b','c','d','e'];
+                    var filteredData = [];                    
+					
+                    for(var key in data)
 					{
 						var filename = data[key].name.split(".");
-						data[key].name = suffix[count] + "." + filename[1];
+                        //if the image is identified as server-side resource
+                        if(key > 6)
+                        {
+                            //delete the prefilled image file from the image uploader
+                            data[key].name = suffix[count] + "." + data[key].name.split(".")[1];
+                            filteredData[key] = data[key];
+                        }
 						count++;
 					}
-					
-					productForm.setValues({ variation_number: variation_number},true)
-					webix.ajax().post("process/product_add_process.php", productForm.getValues(),
+                    */
+                                                        
+					//productForm.setValues({ variation_number: variation_number },true)
+					webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
 						function(text, data){
 							if(text == "success")
 							{
-								$$("imageUploader").send(function(response){
+								$$("product_images").send(function(response){
 									if(response.status == "server")
 									{
-										alert("Product Registration Successful");
+										alert("Product registered success");
 										location.reload();
 									}
 								})								
 							}							
-						});
-					
+						});					
 				}
 				else {
 					if(countImgUpload === 0)
@@ -340,9 +377,52 @@
 					else
 						$$("noImgInvalidMsg").hide();
 				}
+                
 			}
+            
+            /* Prefilling product details */
+            <?php
+                if(isset($_GET["id"]))
+                {
+                    $data = new stdClass();
+                    $data->product_category = 3;
+                    $data->product_name = "Product Me";
+                    $data->product_desc = "Bla bla bla";
+                    $data->product_stockQty = 3;
+                    $data->product_weight = number_format(3.5, 2, '.', '');
+                    $data->product_price = number_format(29.9, 2, '.', '');
+                    $data->product_tags = "t1 t2 t3";
+                    $data->product_policy = "warrrranty 1 month only";   
+                    
+                    $product_id = $_GET["id"];
+                    $productImgFolder = "assets/images/products/";
+                    $images = scandir($productImgFolder.$product_id);
+                    
+                    /* remove /. and /.. directory, get images filenames only */
+                    $images = array_filter($images, function ($var) { return strlen($var) > 2; });
+                    $images =  array_values($images);   //reindex array
+                    
+                    $img = "";
+                    $removeLink = "";
+                    $name = "";
+                    for($i=0; $i<count($images); $i++)
+                    {
+                        if($i>0 && $i<count($images))
+                            $name .= ",";
+                        $filetype = explode('.', $images[$i]);
+                        $name .= "{ id:". ($i+1) . ", name:\"$images[$i]\", type:\"$filetype[1]\", status:\"server\" }";
+                        $img  .= "<img src='" . $productImgFolder.$product_id."/".$images[$i]."' width=200 height=200/> ";
+                        $removeLink .= "<a href='javasript:;' onClick='removeImage(". ($i+1) .")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
+                    }
+                    $img .= "<br/>" . $removeLink;               
+                    echo "$$('productRegisterForm').parse(".json_encode($data).");";     
+                    echo "$$('uploadTemplate').define('template',\"$img\");\n";
+                    echo "$$('uploadTemplate').refresh();";
+                    echo "$$('uploadTemplate').define('template',uploadTemp);";
+                    echo "$$('product_images').files.parse([$name]);";
+                }
+            ?>            
 		</script>
-		
         <?php
             include_once "./include/Footer.php";
         ?>

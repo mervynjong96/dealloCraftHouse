@@ -29,7 +29,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
                             <div class="list-group">
-                                <a href="products.php?filter=1" class="list-group-item">Accessories & Clothing</a>
+                                <a href="products.php?filter=1" class="list-group-item">Accessories &amp; Clothing</a>
                                 <a href="products.php?filter=2" class="list-group-item">Bedding/Room Décor</a>
                                 <a href="products.php?filter=3" class="list-group-item">Craft Supplies</a>
                                 <a href="products.php?filter=4" class="list-group-item">Jewelry</a>
