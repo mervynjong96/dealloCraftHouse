@@ -1,5 +1,8 @@
-<?php
+<?php 
 	session_start();
+	if(isset($_SESSION["login_user"])){
+		include_once "./process/count_cart_process.php";
+	}
 ?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -15,7 +18,14 @@
 		<div class="navbar-collapse collapse" id="myNavbar">
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> [0] Checkout</a></li>
+				<?php 
+					if(isset($_SESSION["items_in_cart"])){
+						echo "<li><a href='#'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout "  . $_SESSION["items_in_cart"] ."</a></li>";
+
+					}else{
+						echo "<li><a href='#'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout </a></li>";
+					}
+				?>
 				<li class="active"><a href="index.php">Home</a></li>
 				<li><a href="products.php">Products</a></li>
 				<?php
