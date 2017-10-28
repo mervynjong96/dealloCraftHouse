@@ -34,9 +34,7 @@
         $product_tags = "";
 		if(isset($_POST["product_tags"]))
         	$product_tags = mysqli_real_escape_string($conn, $_POST["product_tags"]);
-		
-		$fields = array('passengerName', 'passengerContact', 'unit_number','street_number', 'street_name', 'suburb', 'destination_suburb','pickup_date','pickup_time');
-		
+				
 		// Insert product info into database
 		$sql_table = "products";
 		$query = "INSERT INTO $sql_table (product_category,product_name,product_desc,product_weight,product_price,product_policy,product_tag,product_stockQty) VALUES ('$product_category', '$product_name', '$product_desc', '$product_weight', '$product_price', '$product_policy','$product_tags','$product_stockQty')";
