@@ -45,7 +45,17 @@
             <div class="container">
                 
                 <div class="well productdetail">
-                    <img class="img-responsive" src="./<?php echo $product["product_image"]; ?>" alt="Picture of <?php echo $product["product_name"]; ?>" />
+                    <img class="img-responsive" src="
+                        <?php
+                            $directory = "./assets/images/products/" . $product["product_id"];
+                            $images = glob("$directory/*.{jpg,png,bmp}", GLOB_BRACE);
+
+                            foreach($images as $image)
+                            {
+                                echo $image;
+                                break;
+                            }
+                        ?>" alt="Picture of <?php echo $product["product_name"]; ?>" />
                     <div>
                         <h2><?php echo $product["product_name"]; ?></h2>
                         <p>
@@ -87,16 +97,11 @@
                         </p>
                         <p><?php echo $product["product_desc"]; ?></p>
                         
-                        <h3>Colors</h3>
-                        <p><?php echo $product["product_color"]; ?></p>
-                        
-                        <h3>Sizes</h3>
-                        <p><?php echo $product["product_size"]; ?></p>
+                        <h3>Size & Colors</h3>
+                        <p>Weight of Product: <?php echo $product["product_weight"]; ?>kg</p>
                         
                         <h3>Shipping & Policies</h3>
                         <p>
-                            <?php echo $product["product_shipping"]; ?>
-                            <br/>
                             <?php echo $product["product_policy"]; ?>
                         </p>
                         
