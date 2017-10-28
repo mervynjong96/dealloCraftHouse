@@ -1,5 +1,4 @@
-<?php
-	
+<?php	
 	session_start();
 
 	include "smtpmailer_process.php";

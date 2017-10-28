@@ -2,17 +2,7 @@
 function list_product($list,$filter) {
     
     include_once "description_filter.php";
-
-    $host = "localhost";
-	$user = "root";
-	$pwd = "";
-	$sql_db = "deallocrafthouse";
-	$conn = @mysqli_connect(
-		$host,
-		$user,
-		$pwd,
-		$sql_db
-	);
+    require "db_conn.php";
 
     if ($filter != 0) {
         $offset = 0;

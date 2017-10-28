@@ -1,16 +1,6 @@
 <?php
     include_once "description_filter.php";
-
-    $host = "localhost";
-	$user = "root";
-	$pwd = "";
-	$sql_db = "deallocrafthouse";
-	$conn = @mysqli_connect(
-		$host,
-		$user,
-		$pwd,
-		$sql_db
-	);
+    require "db_conn.php";
 
     $products = mysqli_query($conn, "SELECT * FROM products ORDER BY product_date_created DESC LIMIT 4");
 ?>
