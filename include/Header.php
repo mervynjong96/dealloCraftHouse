@@ -9,6 +9,8 @@
 <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <!-- Webix -->
 <link href="./assets/webix/codebase/webix.css" rel="stylesheet" />
+<!-- Custom CSS -->
+<link href="./assets/css/style.css" rel="stylesheet" />
 
 <!-- JQuery - required for Bootstraps JavaScript plugins) -->
 <script src="./assets/bootstrap/js/jquery.min.js"></script>
@@ -16,6 +18,5 @@
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- All Webix plug-ins file -->
 <script src="./assets/webix/codebase/webix.js"></script>
-
-<!-- Custom Scripts -->
-<link href="./assets/css/style.css" rel="stylesheet" />
+<!-- Custom form validation rules -->
+<script src="assets/js/form_validation.js"></script>

@@ -1,9 +1,3 @@
-<!--
-    Document:		index.php
-    Author: 		Aethylwyne
-    Created: 		10/2/2017
-    Last Modified: 	10/5/2017
--->
 <?php
 	session_start();
 	if(isset($_SESSION["login_user"])){
@@ -14,27 +8,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>eMarketplace Portal System</title>
+        <title>Deallo Craft House - Register</title>
 
         <?php
             include_once "./include/Header.php"
-        ?>
-		
-		<!-- Form validation Javascript -->
-   	 	<script src="assets/js/form_validation.js"></script>
+        ?>		
     </head>
     <body>
         <?php
             include_once "./include/NavigationBar.php"
         ?>
 	
-		<div class="content">
-			<div class="container">
-				<h1>Sign Up</h1>
-					<div id="registerForm"></div>
-				<br/>
-			</div>	
-		</div>
+        <div class="container">
+            <h1 class="page-header" style='margin-bottom:0px;'>Sign Up</h1>
+                <div id="registerForm"></div>
+        </div>	
 		
 		<script type="text/javascript" charset="utf-8">
 			$.ajaxSetup({
@@ -83,7 +71,7 @@
 						{
 							height:60,
 							cols:[
-								{ view: "text", label: "Contact number", id:"phone_code", name: "phone_code", required:true, width:250, placeholder:"Phone code", readonly:true, bottomLabel:""},
+								{ view: "text", label: "Contact number", id:"phone_code", name: "phone_code", required:true, width:280, placeholder:"Country Code", readonly:true, bottomLabel:""},
 								{ view: "text", label: "", name: "phone_number", required:true, width:300, placeholder:"Phone number", bottomLabel:"" }
 							]
 						},
@@ -92,21 +80,29 @@
 						{ view:"checkbox", labelRight:"I have read and agree to the Terms and Conditions & Privacy Policy", name:"acceptRules", invalidMessage:"You must accept the rules to use our service" }
 					]
 				},
-				{
-					view:"button", label:"Register", align:"center", width:100, click:"submit"
-				}
+                {
+                    cols:[
+                        { width:160 },
+				        {
+                            view:"button",
+                            template:"<a class='btn btn-success' style='margin-right:10px;' onClick='submit()'>Register</a> <a href='login.php'>Registered already?</a>"
+                        }
+                    ]
+                }            
 			];
 
 			webix.ui({
 				container:"registerForm",
+                id:"formContent",
 				rows:[
 					{
 						view:"form",
 						id:"registerForm",
+						borderless:true,
 						elements:registerFormContent,
 						elementsConfig:{
 							labelAlign:"right",
-							labelWidth: 140,
+							labelWidth: 160,
 							width:600
 						},
 						rules:{
@@ -135,16 +131,16 @@
 				$$("phone_code").setValue(phoneCode.dialling_code);
 			});
 
-			function submit(){
-				var registerForm = $$("registerForm");
-				if(registerForm.validate())	{
-					webix.ajax().post("process/signup_process.php", registerForm.getValues(),
-						function(text, data){
-							alert(text);					
-							if(text == "Registration Success")	
-								window.location.replace("index.php");
-						});
-				}
+			function submit(){                         
+                var registerForm = $$("registerForm");
+                if(registerForm.validate())	{
+                    webix.ajax().post("process/signup_process.php", registerForm.getValues(),
+                    function(text, data){
+                        alert(text);					
+                        if(text == "Registration Success")	
+                            window.location.replace("login.php");
+                    });
+                }
 			}
 		</script>	
         
