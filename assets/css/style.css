@@ -24,7 +24,7 @@
     background: #ee984d;
     padding-bottom: 30px;
     width: 100%;
-    /* border-bottom: 1px solid #d35400; */
+    border-top: 1px solid #d35400;
     color: #ecf0f1;
 }
 .footer a {
