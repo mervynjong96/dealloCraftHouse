@@ -20,10 +20,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<?php 
 					if(isset($_SESSION["items_in_cart"])){
-						echo "<li><a href='#'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout "  . $_SESSION["items_in_cart"] ."</a></li>";
+						echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout "  . $_SESSION["items_in_cart"] ."</a></li>";
 
 					}else{
-						echo "<li><a href='#'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout </a></li>";
+						echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout </a></li>";
 					}
 				?>
 				<li class="active"><a href="index.php">Home</a></li>
