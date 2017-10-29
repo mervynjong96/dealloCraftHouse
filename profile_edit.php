@@ -31,7 +31,26 @@
                     $.ajaxSetup({
                         async: false
                     });
+                    
+                    <?php
+                        require "process/db_conn.php";
+        
+                        $sql_table2 = "userinfo";
+                        $query2 = "SELECT * FROM $sql_table2 WHERE userid = '$_SESSION[login_user]'";
+                        $result2 = mysqli_query($conn, $query2);
+                        $result_info2 = mysqli_fetch_assoc($result2);
 
+                        $_SESSION["user_name"] = $result_info2["name"];
+                        $name = explode(" ",$_SESSION["user_name"]); 
+                        $lname = array_pop($name);
+                        $fname = implode(" ", $name);
+                        $_SESSION["user_gender"] = $result_info2["gender"];
+                        $_SESSION["user_country"] = $result_info2["country"];
+                        $_SESSION["user_contact"] = $result_info2["contact_number"];
+                        $_SESSION["user_address"] = $result_info2["shipping_address"];
+                        $_SESSION["user_postcode"] = $result_info2["postcode"];
+                    ?>
+                    
                     var countries = [];
                     $.getJSON("assets/json/countries.json", function(json){
                         countries = json;
@@ -48,6 +67,7 @@
                         {
                             rows:[
                                 { template:"Change Password", type:"section"},
+                                { view:"text", type:"password", label:"Current Password", id:"oldpassword", name:"oldpassword", invalidMessage:"* Password does not match your current password" },
                                 { view:"text", type:"password", label:"New Password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
                                 { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
                             ]
@@ -55,9 +75,9 @@
                         {
                             rows:[
                                 { template:"Checkout Information", type:"section" },
-                                { view:"text", label:"First Name", name:"fname" },
-                                { view:"text", label:"Last Name", name:"lname" },
-                                { view:"radio", label:"Gender", name:"gender", bottomPadding:25, invalidMessage:"* Required", options:[
+                                { view:"text", label:"First Name", name:"fname", value: "<?php echo $fname; ?>" },
+                                { view:"text", label:"Last Name", name:"lname", value: "<?php echo $lname; ?>" },
+                                { view:"radio", label:"Gender", name:"gender", bottomPadding:25, invalidMessage:"* Required", value:"<?php echo $_SESSION["user_gender"]; ?>" , options:[
                                         { id:"m", value:"Male" },
                                         { id:"fm", value:"Female" }
                                     ]
@@ -82,22 +102,22 @@
                                         { view: "text", label: "", name: "phone_number", width:300, placeholder:"Phone number", bottomLabel:"" }
                                     ]
                                 },
-                                { view:"text", label:"Shipping Address", name:"shipping_address", invalidMessage:"* Required" },
-                                { view:"text", label:"Postcode", name:"postcode", width: 300, invalidMessage:"Must contains number only" }
+                                { view:"text", label:"Shipping Address", name:"shipping_address", invalidMessage:"* Required", value: "<?php echo $_SESSION["user_address"]; ?>" },
+                                { view:"text", label:"Postcode", name:"postcode", width: 300, invalidMessage:"Must contains number only", value: "<?php echo $_SESSION["user_postcode"]; ?>" }
                             ]
                         },
-                        {
-                            rows:[
+                        { 
+                            rows: [
                                 { template:"Confirmation", type:"section" },
-                                { view:"text", type:"password", label:"Current Password", name:"oldpassword", invalidMessage:"* Password does not match your current password", required: true }
-                            ]
-                        },
-                        { margin: 5,
-                            cols: [
-                                {},
-                                { view:"button", label:"Save", align:"center", click:"submit", type: "form" },
-                                { view:"button", label:"Cancel", align:"center", click:"submit", type: "danger" },
-                                {}
+                                {
+                                    margin: 5,
+                                    cols: [
+                                        {},
+                                        { view:"button", label:"Save", align:"center", click:"submit", type: "form" },
+                                        { view:"button", label:"Cancel", align:"center", click:"cancel", type: "danger" },
+                                        {}
+                                    ]
+                                }
                             ]
                         }
                     ];
@@ -116,8 +136,20 @@
                                 },
                                 width: 750,
                                 rules:{
-                                    "oldpassword"       : function(value){ return "<?php echo $_SESSION["login_password"]; ?>" === value },
-                                    "password"          : function(value,data,name){ return validatePassword(value,data,name,this) },
+                                    "oldpassword"       : function(value){
+                                                            if($$("oldpassword").getValue() != "") {
+                                                                return "<?php echo $_SESSION["login_password"]; ?>" === value
+                                                            } else {
+                                                                return true;
+                                                            }
+                                                        },
+                                    "password"          : function(value,data,name){
+                                                            if($$("oldpassword").getValue() != "") {
+                                                                return validatePassword(value,data,name,this);
+                                                            } else {
+                                                                return true;
+                                                            }
+                                                        },
                                     "matchPassword"     : function(value){ return this.getValues().password === value },
                                     "fname"             : function(value,data,name){ return validateName(value,data,name,this) },
                                     "lname"             : function(value,data,name){ return validateName(value,data,name,this) },
@@ -152,6 +184,10 @@
                             */
                             alert("Profile Saved Successfully!");
                         }
+                    }
+                    
+                    function cancel(){
+                        window.location.replace("profile.php");
                     }
                 </script>
                 

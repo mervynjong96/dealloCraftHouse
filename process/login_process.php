@@ -16,7 +16,6 @@
 		$query = "SELECT * FROM $sql_table WHERE email = '$email' AND password =  '$password'";
 		$result = mysqli_query($conn, $query);
 		
-		
 		if(mysqli_affected_rows($conn) > 0) {
 			$result_info = mysqli_fetch_assoc($result);
 			// The account is found and matches the password in the database
