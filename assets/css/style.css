@@ -246,8 +246,22 @@
     margin-bottom: 15px;
 }
 
+.alignRight{
+	text-align:right;
+}
 
+.cartHeader{
+	font-weight:bold;
+	text-align:center;
+	padding-bottom:10px;
+}
 
+.alignCenter{
+	text-align:center;
+}
 
+input[type=number]{
+	width:50%;
+}
 
 
