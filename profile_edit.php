@@ -26,6 +26,7 @@
                 <h2>Profile Information</h2>
                 
                 <div id="profile_edit"></div>
+                
                 <script type="text/javascript" charset="utf-8">
                     $.ajaxSetup({
                         async: false
@@ -40,24 +41,23 @@
                         {
                             rows:[
                                 { template:"Account Information", type:"section"},
-                                { view:"text", label:"E-mail", name:"email" },
-                                { view:"text", label:"User ID", name:"userid" }
+                                { view:"text", label:"E-mail", name:"email", readonly: true, value: "<?php echo $_SESSION["login_email"]; ?>" },
+                                { view:"text", label:"User ID", name:"userid", readonly: true, value: "<?php echo $_SESSION["login_user"]; ?>" }
                             ]
                         },
                         {
                             rows:[
                                 { template:"Change Password", type:"section"},
-                                { view:"text", type:"password", label:"Old Password", name:"oldpassword", required:true, invalidMessage:"* Password must between 6 and 10 characters" },
-                                { view:"text", type:"password", label:"New Password", name:"password", required:true, invalidMessage:"* Password must between 6 and 10 characters" },
-                                { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", required:true, invalidMessage:"* Password does not match" }
+                                { view:"text", type:"password", label:"New Password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
+                                { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
                             ]
                         },
                         {
                             rows:[
                                 { template:"Checkout Information", type:"section" },
-                                { view:"text", label:"First Name", name:"fname", required:true },
-                                { view:"text", label:"Last Name", name:"lname", required:true },
-                                { view:"radio", label:"Gender", name:"gender", required:true, bottomPadding:25, invalidMessage:"* Required", options:[
+                                { view:"text", label:"First Name", name:"fname" },
+                                { view:"text", label:"Last Name", name:"lname" },
+                                { view:"radio", label:"Gender", name:"gender", bottomPadding:25, invalidMessage:"* Required", options:[
                                         { id:"m", value:"Male" },
                                         { id:"fm", value:"Female" }
                                     ]
@@ -67,7 +67,6 @@
                                     id:"countriesSelect",
                                     label:"Country",
                                     name:"country_code",
-                                    required: true,
                                     invalidMessage:"* Required",
                                     suggest:{
                                         body:{
@@ -79,12 +78,18 @@
                                 {
                                     height:60,
                                     cols:[
-                                        { view: "text", label: "Contact number", id:"phone_code", name: "phone_code", required:true, width:250, placeholder:"Phone code", readonly:true, bottomLabel:""},
-                                        { view: "text", label: "", name: "phone_number", required:true, width:300, placeholder:"Phone number", bottomLabel:"" }
+                                        { view: "text", label: "Contact number", id:"phone_code", name: "phone_code", width:300, placeholder:"Ext. Code", readonly:true, bottomLabel:""},
+                                        { view: "text", label: "", name: "phone_number", width:300, placeholder:"Phone number", bottomLabel:"" }
                                     ]
                                 },
-                                { view:"text", label:"Shipping Address", name:"shipping_address", required:true, invalidMessage:"* Required" },
-                                { view:"text", label:"Postcode", name:"postcode", width: 300, invalidMessage:"Must contains number only", required:true }
+                                { view:"text", label:"Shipping Address", name:"shipping_address", invalidMessage:"* Required" },
+                                { view:"text", label:"Postcode", name:"postcode", width: 300, invalidMessage:"Must contains number only" }
+                            ]
+                        },
+                        {
+                            rows:[
+                                { template:"Confirmation", type:"section" },
+                                { view:"text", type:"password", label:"Current Password", name:"oldpassword", invalidMessage:"* Password does not match your current password", required: true }
                             ]
                         },
                         { margin: 5,
@@ -99,17 +104,19 @@
 
                     webix.ui({
                         container:"profile_edit",
+                        id: "formContent",
                         rows:[
                             {
                                 view:"form",
                                 id:"profile_edit",
                                 elements: profile_edit,
                                 elementsConfig:{
-                                    labelAlign:"right",
-                                    labelWidth: 140
+                                    labelAlign:"left",
+                                    labelWidth: 200
                                 },
+                                width: 750,
                                 rules:{
-                                    "oldpassword"       : webix.rules.isNotEmpty,
+                                    "oldpassword"       : function(value){ return "<?php echo $_SESSION["login_password"]; ?>" === value },
                                     "password"          : function(value,data,name){ return validatePassword(value,data,name,this) },
                                     "matchPassword"     : function(value){ return this.getValues().password === value },
                                     "fname"             : function(value,data,name){ return validateName(value,data,name,this) },
@@ -117,8 +124,7 @@
                                     "gender"            : webix.rules.isChecked,
                                     "phone_number"      : function(value,data,name){ return validatePhone(value,data,name,this) },
                                     "shipping_address"  : webix.rules.isNotEmpty,
-                                    "postcode"          : function(value,data,name){ return validatePostcode(value,data,name,this) },
-                                    "acceptRules"       : webix.rules.isChecked
+                                    "postcode"          : function(value,data,name){ return validatePostcode(value,data,name,this) }
                                 }
                             }
                         ]

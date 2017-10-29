@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 					<ul>
-						<li><a href="#"><img src="./assets/images/steampic.png" alt="Deallo Craft Logo" /></a></li>
+						<li><a href="#"><img src="./assets/images/sample.png" alt="Deallo Craft Logo" /></a></li>
 					</ul>
 					<p>Deallo Craft House is a company assisting local entreprenuers sell their handicrafts.</p>
 				</div>
@@ -40,6 +40,7 @@
 			</div>
 		</div>
 	</div>
+    <!--
 	<div class="footer-bottom">
 		<div class="container">
 			<p class="pull-left">Copyright 2017 &copy; Deallo Craft House</p>
@@ -50,6 +51,7 @@
 			</ul>
 		</div>
 	</div>
+    -->
 </footer>
 
 <!-- The following code must put at last section to ensure apply the following CSS after the form rendered by Webix JS -->
