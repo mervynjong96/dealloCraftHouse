@@ -1,14 +1,5 @@
 <?php
-	$host = "localhost";
-	$user = "root";
-	$pwd = "";
-	$sql_db = "deallocrafthouse";
-	$conn = @mysqli_connect(
-		$host,
-		$user,
-		$pwd,
-		$sql_db
-	);
+	require "db_conn.php";
 
 	$total = 0;
 
@@ -61,9 +52,9 @@
 				
 				<hr/>";
 				while($result_products = mysqli_fetch_assoc($result)){
-						
+					
 					$directory = "./assets/images/products/" . $result_products["product_id"];
-					$images = glob("$directory/a.{jpg,png,bmp}", GLOB_BRACE);
+					$images = glob("$directory/*.{jpg,png,bmp}", GLOB_BRACE);
 					
 					foreach($images as $image)
 					{
@@ -79,7 +70,7 @@
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"],2,'.','') . "</div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <input type='number' size='1' min='1' value='" . $result_products["product_quantity"] . "'/></div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"]*$result_products["product_quantity"],2,'.','') . "</div>
-						<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><span class='glyphicon glyphicon-remove'></span></div>";
+						<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><a href='#' onclick='removeItem(" . $result_products['product_id'] ." )'><span class='glyphicon glyphicon-remove'></span></a></div>";
 					
 					/*echo "<tr>
 								<td> <input type='checkbox' name='". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "'/> </td>
@@ -90,14 +81,13 @@
 								<td> <span class='glyphicon glyphicon-remove'></span> </td>
 							</tr>";*/
 					echo "</div> <hr/>";	
-					echo "	<p class='alignRight'> Total price: <span id='total_price'></span> </p>
-				<p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onClick=''>Checkout</a> </p>";
+					$product_image="";
 				}
 				//echo "</table>";
 				
-				/*echo "<p class='alignRight'> Total price:" . $total . "	 </p>
-					  <p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onClick='alert($total)'>Checkout</a> </p>
-				";*/
+				
+				echo "	<p class='alignRight'> Total price: <span id='total_price'></span> </p>
+				<p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onClick=''>Checkout</a> </p>";
 			}else{
 				
 				echo "Something goes wrong, please try again later";

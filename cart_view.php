@@ -42,6 +42,17 @@
 					document.getElementById("total_price").innerHTML=total;
 				}
 			}
+			
+			function removeItem(product_id){
+				webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
+				function(text,data){
+					alert(text);
+					
+					if(text=="Remove item successfully"){
+						location.reload();
+					}
+				})
+			}
 		</script>
 		
 	</body>
