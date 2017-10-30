@@ -32,6 +32,11 @@
                         async: false
                     });
                     
+                    var countries = [];
+                    $.getJSON("assets/json/countries.json",function(json){
+                        countries = json;
+                    });
+                    
                     <?php
                         require "process/db_conn.php";
         
@@ -41,6 +46,9 @@
                         $result2 = mysqli_query($conn, $query2);
                         $result_info2 = mysqli_fetch_assoc($result2);
 
+//Delete this after you know what happen
+echo "console.log('".json_encode($result_info2)."')"; 
+        
                         $_SESSION["user_name"] = $result_info2["name"];
                         $name = explode(" ",$_SESSION["user_name"]); 
                         $lname = array_pop($name);
@@ -52,11 +60,6 @@
                         $_SESSION["user_postcode"] = $result_info2["postcode"];
                     ?>
                     
-                    var countries = [];
-                    $.getJSON("assets/json/countries.json", function(json){
-                        countries = json;
-                    });
-
                     var profile_edit = [
                         {
                             rows:[
@@ -87,14 +90,7 @@
                                             yCount:10
                                         }
                                     }
-                                    , value: "<?php 
-                                    $countriesJSON = json_decode(file_get_contents('assets/json/countries.json'),true);
-                                    for($x=0; $x<count($countriesJSON); $x++){
-                                        if($countriesJSON[$x]["dialling_code"] == substr($_SESSION["user_contact"],3)){
-                                            echo $countriesJSON[$x]["value"];
-                                        }
-                                    }
-                                    ?>"
+                                    , value: "<?php echo $_SESSION["user_country"]; ?>"
                                 },
                                 {
                                     height:60,
