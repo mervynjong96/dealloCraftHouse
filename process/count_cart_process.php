@@ -10,7 +10,8 @@
 		$sql_db
 	);
 
-	session_start();
+	if(session_id() == "")
+		session_start();
 
 	// Check if all fields are set with value
     if( 
