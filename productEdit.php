@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            <?php
-                if(!isset($_GET["id"]))
-                    echo "Add My Product";
-                else
-                    echo "Edit My Product";
-            ?>
-        </title>
+        <title><?php echo (!isset($_GET["id"]) ? "Add My Product" : "Edit My Product") ?></title>
 
         <?php
             include_once "./include/Header.php";
@@ -25,17 +18,13 @@
     <body>
         <?php
             include_once "./include/NavigationBar.php";
+            require "process/db_conn.php";
         ?>
         
         <div class="content">
             <div class="container">
 				<h1 class="page-header" style='margin-bottom:0px;'>
-                    <?php
-                        if(!isset($_GET["id"]))
-                            echo "Add My Product";
-                        else
-                            echo "Edit My Product";
-                    ?>                    
+                    <?php echo (!isset($_GET["id"]) ? "Add My Product" : "Edit My Product") ?>                   
                 </h1>
 				<div id="productRegisterForm"></div>
             </div>
@@ -49,7 +38,7 @@
 
                 if(!data.order || data.order.length === 0)
                 {
-                    preview = "<img src='"+"assets/images/products/sample.png' height=200 width=200/>";
+                    preview = "<img src='"+"assets/images/uploadsample.png' height=200 width=200/>";
                     preview += "<br/>";
                     preview += "<span style='display:inline-block; width:200px; text-align:center'>No image selected</span> ";
                 }
@@ -75,12 +64,12 @@
                         /* if the image is read from server */
                         else
                         {
-                            preview += "src='assets/images/products/1/"+suffix[obj.id]+".jpg' ";
+                            var filetype = "." + obj.name.split(".")[1];
+                            preview += "src='assets/images/products/"+<?php echo (isset($_GET["id"]) ? $_GET["id"] : "1") ?> +"/"+suffix[obj.id]+filetype+"' ";
                         }
                         preview     += "height=200 width=200/> ";
-                        removeLink  += "<a href='javasript:;' onClick='removeImage("+ obj.id +")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
+                        removeLink  += "<a href='javasript:;' onClick='removeImage("+ obj.id +","+ '"' +obj.name + '"' +")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
                     });
-                    
                     //Concatenate images with hyperlink of removal
                     preview += "<br/>" + removeLink;
                 }
@@ -90,7 +79,8 @@
 			var productRegisterForm = [
 				{					
 					id:"formContent",
-					rows:[                        
+					rows:[
+                        { view:"label", id:"invMsg", css:"invalidMsg", label:"* Some field(s) did not input properly, please fix the mistake by following the instruction message to those input field(s)", hidden:true },
 						{ template:"Product Images", type:"section" },
 						{ 
 							cols:[
@@ -110,19 +100,19 @@
 											var type = item.type.toLowerCase();
 											var itemsizeMB = item.size/1024;
 											
-											//Detect and avoid unsupported image input
+											// Detect and avoid unsupported image input
 											if (type != "jpg" && type != "jpeg" && type != "png"){
 												alert("File format of " + item.name + " is not supported");
 												return false;
 											}
 											
-											//Detect and avoid image file with more than 3MB file size
+											// Detect and avoid image file with more than 3MB file size
 											if (itemsizeMB >= 3072){
 												alert(item.name + " file size exceeded maximum 3MB limit");
 												return false;
 											}
 											
-											//Detect and avoid duplicate image file input
+											// Detect and avoid duplicate image file input
 											var data = this.files.data.pull;
 											var countData = this.files.data.order;
 											if(countData.length > 0)
@@ -225,7 +215,7 @@
 				{
 					cols:[
 						{ width:140 },
-						{ view:"button", template:"<a class='btn btn-success' onClick='submit()'><?php echo "Add"?></a> <a class='btn btn-danger' href='javascript:;'>Cancel</a>", width:300 }
+						{ view:"button", template:"<button class='btn btn-success' id='submitBtn' onClick='submit()' style='width:70px'><?php echo (!isset($_GET["id"]) ? "Add" : "Update") ?></button> <button class='btn btn-danger' style='width:70px' href='javascript:;'>Cancel</button>", width:300 }
 					]
 				}
 			];
@@ -253,13 +243,17 @@
 							"product_price"     : function(value,data,name){ return validateWeightPrice(value,data,name,this) },
 							"product_tags"      : function(value,data,name){ return validateTags(value,data,name,this) },
 							"product_policy"    : webix.rules.isNotEmpty
-						} 
+						}
 					}
 				]
 			});
-			
-			function removeImage(imageID)
+            
+            var removedImage = [];
+			function removeImage(imageID, imageName)
 			{
+                // Detect only the server-side image(s) to be removed by user
+                if(imageID <= 5)
+                    removedImage.push(imageName);
 				$$("product_images").files.data.remove(imageID);
 			}			
 			/*
@@ -310,7 +304,7 @@
 			
 			function delVariation(){
 				$$("btnAddVariation").show();
-				
+				    
 				numVar = $$("variations").q.length;
 				if(numVar !== 0)
 				{
@@ -326,102 +320,99 @@
 					$$("stockQuantity").show();
 				}
 			}	*/
-			
-			function submit(){
-				//console.log($$("productRegisterForm").getValues());
-				
+            
+            function uploadImages(action,countImgUpload,productID,countToUpload,serverData){                
+				var imgUploader = $$("product_images");
+                if(action === "add")
+                {
+                    // Upload images
+                    imgUploader.define('formData',{ action: "add", countUpload:countImgUpload });
+                    $$("product_images").send(function(response){
+                        if(response.status == "server")
+                            window.location = "index.php";                        
+                    });
+                }
+                else if(action === "modify")
+                {
+                    alert("modifying... "+countToUpload)
+                    // Upload images if there is new images picked by user through uploader
+                    imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData, action:"modify" });
+                    $$("product_images").send(function(response){
+                        console.log(response)
+                        if(response.status == "server")
+                            window.location = "index.php";
+                    });
+                }
+                else if(action === "delete")
+                {
+                    webix.ajax().post("process/upload_images.php", { id:productID, serverData:serverData, action:"delete" }, 
+                        function(text, data){   
+                        alert(text);
+                            if(text === "success")
+                                window.location = "index.php";
+                        })
+                }
+            }
+                        
+			function submit(){				
+                $$("invMsg").hide();
                 var productForm = $$("productRegisterForm");
-				var countImgUpload = $$("product_images").files.data.order.length;
-				var isFormValid = productForm.validate();				
-				if(countImgUpload > 0 && isFormValid)
-				{
-					// Standardized naming of different product image(s)
-					/*
-                    var data = $$("product_images").files.data.pull;
-					var count = 1;
-					var suffix = ['','a','b','c','d','e'];
-                    var filteredData = [];                    
-					
-                    for(var key in data)
-					{
-						var filename = data[key].name.split(".");
-                        //if the image is identified as server-side resource
-                        if(key > 6)
-                        {
-                            //delete the prefilled image file from the image uploader
-                            data[key].name = suffix[count] + "." + data[key].name.split(".")[1];
-                            filteredData[key] = data[key];
-                        }
-						count++;
-					}
-                    */
-                                                        
+				var imgUploader = $$("product_images");
+                var imgFiles = imgUploader.files.data;
+                var countImgUpload = imgFiles.order.length;
+				var isFormValid = productForm.validate();
+                
+				if( countImgUpload > 0 && isFormValid )
+				{   
+                    <?php 
+                        if(isset($_GET["id"])) { 
+                            echo "var productID = ".$_GET['id'];
+                    ?>					
+                            // Standardized naming of different product image(s)					
+                            var data = imgFiles.pull;
+                            var serverData = [];    //store server-side images that is not removed from uploader list
+                            var countToUpload = 0;
+                            for(var key in data)
+                            {  
+                                var filename = data[key].name;
+                                //if the image is identified as server-side resource
+                                if(key <= 5)
+                                    serverData.push(filename);
+                                else
+                                    countToUpload++;
+                            }
+                    
+                            // If only server-side images to be removed but no new images added by user
+                            if(countToUpload === 0 && removedImage.length > 0)
+                                uploadImages("delete",0,productID,countToUpload,serverData);
+                            // If only user add images but no server-side image to be removed
+                            else if(countToUpload > 0)
+                                uploadImages("modify",0,productID,countToUpload,serverData);
+                    <?php
+                            echo "imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData });";
+                            echo "productForm.setValues({id:".$_GET["id"]."},true)";
+                        };
+                    ?>
+                    
 					//productForm.setValues({ variation_number: variation_number },true)
 					webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
 						function(text, data){
 							if(text == "success")
-							{
-								$$("product_images").send(function(response){
-									if(response.status == "server")
-									{
-										alert("Product registered success");
-										location.reload();
-									}
-								})								
-							}							
-						});					
+                                <?php echo (!isset($_GET["id"]) ? "uploadImages('add',countImgUpload,0,0,'');" : "uploadImages('modify',0,productID,countToUpload,serverData);") ?>  
+						});                   
 				}
 				else {
 					if(countImgUpload === 0)
-						$$("noImgInvalidMsg").show();
+                        $$("noImgInvalidMsg").show();
 					else
 						$$("noImgInvalidMsg").hide();
+                    
+                    $$("invMsg").show();
+                    window.location = "#";   //jump to top of page to let user sees the error message 
 				}
-                
 			}
             
-            /* Prefilling product details */
-            <?php
-                if(isset($_GET["id"]))
-                {
-                    $data = new stdClass();
-                    $data->product_category = 3;
-                    $data->product_name = "Product Me";
-                    $data->product_desc = "Bla bla bla";
-                    $data->product_stockQty = 3;
-                    $data->product_weight = number_format(3.5, 2, '.', '');
-                    $data->product_price = number_format(29.9, 2, '.', '');
-                    $data->product_tags = "t1 t2 t3";
-                    $data->product_policy = "warrrranty 1 month only";   
-                    
-                    $product_id = $_GET["id"];
-                    $productImgFolder = "assets/images/products/";
-                    $images = scandir($productImgFolder.$product_id);
-                    
-                    /* remove /. and /.. directory, get images filenames only */
-                    $images = array_filter($images, function ($var) { return strlen($var) > 2; });
-                    $images =  array_values($images);   //reindex array
-                    
-                    $img = "";
-                    $removeLink = "";
-                    $name = "";
-                    for($i=0; $i<count($images); $i++)
-                    {
-                        if($i>0 && $i<count($images))
-                            $name .= ",";
-                        $filetype = explode('.', $images[$i]);
-                        $name .= "{ id:". ($i+1) . ", name:\"$images[$i]\", type:\"$filetype[1]\", status:\"server\" }";
-                        $img  .= "<img src='" . $productImgFolder.$product_id."/".$images[$i]."' width=200 height=200/> ";
-                        $removeLink .= "<a href='javasript:;' onClick='removeImage(". ($i+1) .")' style='display:inline-block; width:200px; text-align:center'>[ - Remove ]</a> ";
-                    }
-                    $img .= "<br/>" . $removeLink;               
-                    echo "$$('productRegisterForm').parse(".json_encode($data).");";     
-                    echo "$$('uploadTemplate').define('template',\"$img\");\n";
-                    echo "$$('uploadTemplate').refresh();";
-                    echo "$$('uploadTemplate').define('template',uploadTemp);";
-                    echo "$$('product_images').files.parse([$name]);";
-                }
-            ?>            
+            <?php require "process/productEdit_getDetails.php"; ?>
 		</script>
         <?php
             include_once "./include/Footer.php";

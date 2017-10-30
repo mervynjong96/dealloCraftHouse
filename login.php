@@ -95,6 +95,10 @@
                     });
                 }
             }
+            
+            webix.UIManager.addHotKey("enter", function(){
+                login();
+            });
 		</script>
 		
 		<?php
