@@ -18,35 +18,10 @@
 		
 		<div class="content">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-					</div>
-					
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-						Product Image
-					</div>
-					
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-						Product Name
-					</div>
-					
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-						Price
-					</div>
-					
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-						Quantity
-					</div>
-					
-					<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader">
-					
-					</div>
-				</div>
 				
 				<?php include_once "process/list_cart_process.php" ?>
 				
-				<p class='alignRight'> Total price: <span id="total_price"></span> </p>
-				<p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onClick=''>Checkout</a> </p>
+			
 			</div>
 		</div>
 		
