@@ -35,6 +35,7 @@
                     <?php
                         require "process/db_conn.php";
         
+                        // retrieves user's account data
                         $sql_table2 = "userinfo";
                         $query2 = "SELECT * FROM $sql_table2 WHERE userid = '$_SESSION[login_user]'";
                         $result2 = mysqli_query($conn, $query2);
@@ -66,14 +67,6 @@
                         },
                         {
                             rows:[
-                                { template:"Change Password", type:"section"},
-                                { view:"text", type:"password", label:"Current Password", id:"oldpassword", name:"oldpassword", invalidMessage:"* Password does not match your current password" },
-                                { view:"text", type:"password", label:"New Password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
-                                { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
-                            ]
-                        },
-                        {
-                            rows:[
                                 { template:"Checkout Information", type:"section" },
                                 { view:"text", label:"First Name", name:"fname", value: "<?php echo $fname; ?>" },
                                 { view:"text", label:"Last Name", name:"lname", value: "<?php echo $lname; ?>" },
@@ -94,16 +87,32 @@
                                             yCount:10
                                         }
                                     }
+                                    , value: "<?php 
+                                    $countriesJSON = json_decode(file_get_contents('assets/json/countries.json'),true);
+                                    for($x=0; $x<count($countriesJSON); $x++){
+                                        if($countriesJSON[$x]["dialling_code"] == substr($_SESSION["user_contact"],3)){
+                                            echo $countriesJSON[$x]["value"];
+                                        }
+                                    }
+                                    ?>"
                                 },
                                 {
                                     height:60,
                                     cols:[
-                                        { view: "text", label: "Contact number", id:"phone_code", name: "phone_code", width:300, placeholder:"Ext. Code", readonly:true, bottomLabel:""},
-                                        { view: "text", label: "", name: "phone_number", width:300, placeholder:"Phone number", bottomLabel:"" }
+                                        { view: "text", label: "Contact number", id:"phone_code", name: "phone_code", width:300, placeholder:"Ext. Code", readonly:true, bottomLabel:"", value: "<?php echo substr($_SESSION["user_contact"],0,3); ?>"},
+                                        { view: "text", label: "", name: "phone_number", width:300, placeholder:"Phone number", bottomLabel:"", value: "<?php echo substr($_SESSION["user_contact"],3); ?>" }
                                     ]
                                 },
                                 { view:"text", label:"Shipping Address", name:"shipping_address", invalidMessage:"* Required", value: "<?php echo $_SESSION["user_address"]; ?>" },
                                 { view:"text", label:"Postcode", name:"postcode", width: 300, invalidMessage:"Must contains number only", value: "<?php echo $_SESSION["user_postcode"]; ?>" }
+                            ]
+                        },
+                        {
+                            rows:[
+                                { template:"Change Password", type:"section"},
+                                { view:"text", type:"password", label:"Current Password", id:"oldpassword", name:"oldpassword", invalidMessage:"* Password does not match your current password" },
+                                { view:"text", type:"password", label:"New Password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
+                                { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
                             ]
                         },
                         { 
