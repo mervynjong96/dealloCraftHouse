@@ -44,14 +44,19 @@
 			}
 			
 			function removeItem(product_id){
-				webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
-				function(text,data){
-					alert(text);
-					
-					if(text=="Remove item successfully"){
-						location.reload();
+				webix.confirm("Do you want to remove this item fom your cart?", function(result){
+					if(result){
+							webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
+							function(text,data){
+								alert(text);
+
+								if(text=="Remove item successfully"){
+									location.reload();
+								}
+							})
+
 					}
-				})
+				});
 			}
 		</script>
 		
