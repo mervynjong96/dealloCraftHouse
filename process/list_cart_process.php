@@ -16,7 +16,7 @@
 		$num_items = mysqli_fetch_assoc($result);
 		if($num_items["items_count"] > 0) {
 			
-			$query = "SELECT cart_product.product_quantity,products.product_id,products.product_name,products.product_price FROM cart_product, products WHERE cart_product.product_id = products.product_id
+			$query = "SELECT cart_product.product_quantity,products.product_id,products.product_name,products.product_price,products.product_stockQty FROM cart_product, products WHERE cart_product.product_id = products.product_id
 			 AND cart_product.userid = '$userid' ";
 			$result = mysqli_query($conn, $query);
 			if($result->num_rows>0){
@@ -62,15 +62,30 @@
 						break;
 					}
 					echo "<div class='row'>";
-					echo "<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'> <input type='checkbox' name='checkbox_". $result_products["product_id"] . "' id='checkbox_". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "' onclick='sumTotal(this.value,this.name)'/> </div>";
+					echo "<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'> <input type='checkbox' name='checkbox_". $result_products["product_id"] . "' id='checkbox_". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "' onclick='sumTotal(this.value,this.id)'/> </div>";
 					
 					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <img class='list-group-image productimg' src='" .  $product_image . "' alt='Picture of" . $result_products["product_name"] . "' /> </div>";
 					
 					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . $result_products["product_name"] . "</div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"],2,'.','') . "</div>
-						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <input type='number' size='1' min='1' value='" . $result_products["product_quantity"] . "'/></div>
+						
+						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
+							<div class='input-group'>
+							<span class='input-group-btn'>
+								  <button type='button' class='btn btn-default btn-number' id='minus_button_" . $result_products['product_id'] . "' onclick='minusQuantity(". $result_products['product_id'] .",this.id,". $result_products["product_stockQty"] . ")'>
+									  <span class='glyphicon glyphicon-minus'</span>
+								  </button>
+          					</span>
+        						  <input type='text' class='form-control input-number' name='product_quantity_".$result_products['product_id'] . "' value='" . $result_products["product_quantity"] ."'   onkeydown='checkFinishTyping(this.name,". $result_products['product_id'] .",". $result_products["product_stockQty"] . ")'/>
+         					 <span class='input-group-btn'>
+								  <button type='button' class='btn btn-default btn-number'  id='plus_button_" . $result_products['product_id'] . "' onclick='addQuantity(". $result_products['product_id'] .",this.id,". $result_products["product_stockQty"] . ")'>
+									  <span class='glyphicon glyphicon-plus'></span>
+								  </button>
+          					</span>
+							</div>
+						</div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"]*$result_products["product_quantity"],2,'.','') . "</div>
-						<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><a href='#' onclick='removeItem(" . $result_products['product_id'] ." )'><span class='glyphicon glyphicon-remove'></span></a></div>";
+						<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><a href='#' onclick='removeItem(" . $result_products['product_id'] .")'><span class='glyphicon glyphicon-remove'></span></a></div>";
 					
 					/*echo "<tr>
 								<td> <input type='checkbox' name='". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "'/> </td>
