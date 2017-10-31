@@ -11,7 +11,7 @@
 		
         $remove_product_id = mysqli_real_escape_string($conn, $_POST["remove_product_id"]);
       	$userid = mysqli_real_escape_string($conn, $_SESSION["login_user"]);
-		//Count number of items in the database that matches userid
+		
 		$sql_table = "cart_product";
 		
 		$query = "DELETE FROM $sql_table WHERE userid = '$userid' AND product_id='$remove_product_id'";
@@ -19,7 +19,7 @@
 
 		if(mysqli_affected_rows($conn) > 0) {
 			echo "Remove item successfully";
-			// save it into session and display it on the navigation bar
+			
 		}
 		
 		mysqli_close($conn);
