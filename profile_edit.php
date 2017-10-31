@@ -39,15 +39,17 @@
                     
                     <?php
                         require "process/db_conn.php";
+                        $sql_table = "account";
+                        $query = "SELECT * FROM $sql_table WHERE userid = '$_SESSION[login_user]' AND email =  '$_SESSION[login_email]'";
+                        $result = mysqli_query($conn, $query);
+                        $result_info = mysqli_fetch_assoc($result);
+                        $_SESSION["login_password"] = $result_info["password"];
         
                         // retrieves user's account data
                         $sql_table2 = "userinfo";
                         $query2 = "SELECT * FROM $sql_table2 WHERE userid = '$_SESSION[login_user]'";
                         $result2 = mysqli_query($conn, $query2);
                         $result_info2 = mysqli_fetch_assoc($result2);
-
-//Delete this after you know what happen
-echo "console.log('".json_encode($result_info2)."')"; 
         
                         $_SESSION["user_name"] = $result_info2["name"];
                         $name = explode(" ",$_SESSION["user_name"]); 
@@ -107,7 +109,7 @@ echo "console.log('".json_encode($result_info2)."')";
                             rows:[
                                 { template:"Change Password", type:"section"},
                                 { view:"text", type:"password", label:"Current Password", id:"oldpassword", name:"oldpassword", invalidMessage:"* Password does not match your current password" },
-                                { view:"text", type:"password", label:"New Password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
+                                { view:"text", type:"password", label:"New Password", id:"password", name:"password", invalidMessage:"* Password must between 6 and 10 characters" },
                                 { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
                             ]
                         },
@@ -143,16 +145,24 @@ echo "console.log('".json_encode($result_info2)."')";
                                 rules:{
                                     "oldpassword"       : function(value){
                                                             if($$("oldpassword").getValue() != "") {
-                                                                return "<?php echo $_SESSION["login_password"]; ?>" === value
+                                                                return "<?php echo $_SESSION["login_password"]; ?>" === value;
                                                             } else {
-                                                                return true;
+                                                                if($$("password").getValue() != "") {
+                                                                    return "<?php echo $_SESSION["login_password"]; ?>" === value;
+                                                                } else {
+                                                                    return true;
+                                                                }
                                                             }
                                                         },
                                     "password"          : function(value,data,name){
                                                             if($$("oldpassword").getValue() != "") {
                                                                 return validatePassword(value,data,name,this);
                                                             } else {
-                                                                return true;
+                                                                if($$("password").getValue() != "") {
+                                                                    return validatePassword(value,data,name,this);
+                                                                } else {
+                                                                    return true;
+                                                                }
                                                             }
                                                         },
                                     "matchPassword"     : function(value){ return this.getValues().password === value },
@@ -179,15 +189,12 @@ echo "console.log('".json_encode($result_info2)."')";
                     function submit(){
                         var profile_edit = $$("profile_edit");
                         if(profile_edit.validate())	{
-                            /*
-                            webix.ajax().post("process/signup_process.php", profile_edit.getValues(),
+                            webix.ajax().post("process/update_process.php", profile_edit.getValues(),
                                 function(text, data){
                                     alert(text);					
                                     if(text == "Profile Saved Successfully!")	
                                         window.location.replace("profile.php");
                                 });
-                            */
-                            alert("Profile Saved Successfully!");
                         }
                     }
                     

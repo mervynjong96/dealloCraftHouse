@@ -22,7 +22,6 @@
 			echo "Login Success";
 			$_SESSION["login_user"] = $result_info["userid"];
             $_SESSION["login_email"] = $result_info["email"];
-            $_SESSION["login_password"] = $result_info["password"];
 		}
 		// Return error message if login failed
 		else {
