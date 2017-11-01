@@ -36,7 +36,7 @@ function list_product($list,$filter) {
                         <img class="list-group-image productimg" src="
                         <?php
                             $directory = "./assets/images/products/" . $products["product_id"];
-                            $images = glob("$directory/*.{jpg,png,bmp}", GLOB_BRACE);
+                            $images = glob("$directory/*.{jpg,png,jpeg}", GLOB_BRACE);
 
                             foreach($images as $image)
                             {

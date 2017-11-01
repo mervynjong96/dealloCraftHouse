@@ -71,7 +71,7 @@
                     </div>
                 </div>
             
-                <h1>New &amp; Fresh</h1>
+                <h1 class="page-header">New &amp; Fresh</h1>
                 <div class="row list-group">
                     <?php
                         include_once "./process/list_product.php";
@@ -79,34 +79,30 @@
                     ?>
                 </div>
                 
-                <h1>Editor's Choice</h1>
+                <h1 class="page-header">Editor's Choice</h1>
                 <div class="row list-group">
                     <?php
-                        include_once "./process/list_product.php";
                         list_product(2,0);
                     ?>
                 </div>
                 
-                <h1>Just For You!</h1>
+                <h1 class="page-header">Just For You!</h1>
                 <div class="row list-group">
                     <?php
-                        include_once "./process/list_product.php";
                         list_product(1,0);
                     ?>
                 </div>
                 
-                <h1>Meet-ups</h1>
+                <h1 class="page-header">Meet-ups</h1>
                 <div class="row list-group">
                     <?php
-                        include_once "./process/list_product.php";
                         list_product(1,0);
                     ?>
                 </div>
                 
-                <h1>Community Tastemakers</h1>
+                <h1 class="page-header">Community Tastemakers</h1>
                 <div class="row list-group">
                     <?php
-                        include_once "./process/list_product.php";
                         list_product(1,0);
                     ?>
                 </div>
