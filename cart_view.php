@@ -11,6 +11,10 @@
 	<body>
 		
 		<?php
+				
+				if(session_id() == "")
+					session_start();
+				
 				if(!isset($_SESSION["login_user"])){
 					header("location:index.php");
 				}
