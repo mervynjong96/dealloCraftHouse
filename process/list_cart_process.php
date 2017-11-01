@@ -55,7 +55,7 @@
 					
 					$directory = "./assets/images/products/" . $result_products["product_id"];
 					$images = glob("$directory/*.{jpg,png,bmp}", GLOB_BRACE);
-					
+					$product_image ="";
 					foreach($images as $image)
 					{
 						$product_image = $image;
