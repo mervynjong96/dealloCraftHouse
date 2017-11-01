@@ -10,7 +10,11 @@
 	
 	<body>
 		
-		
+		<?php
+				if(!isset($_SESSION["login_user"])){
+					header("location:index.php");
+				}
+		?>
 		
 		<?php
             include_once "./include/NavigationBar.php"
