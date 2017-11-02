@@ -106,7 +106,8 @@
 				}
 				
 				if(currentVal >=maxQuantity){
-					document.getElementById(button_id).setAttribute("disabled",true);
+					document.getElementById(button_id).disabled  = true;
+					
 				}
 				
 				updateInput(field_id,product_id,maxQuantity);
@@ -116,23 +117,45 @@
 				
 				var input_field = $("input[name='"+ field_id +"']");
 				var currentVal = parseInt(input_field.val());
-				
+				var minus_button = document.getElementById("minus_button_"+product_id);
+				var plus_button =  document.getElementById("plus_button_"+product_id);
 				
 				if(Number.isInteger(currentVal)){
 					if(currentVal < 1){
 						currentVal = 1;
 						input_field.val(currentVal);
+						runUpdate(product_id,currentVal);
+						if(plus_button.disabled){
+							plus_button.disabled = false;
+						}
+						
+						minus_button.disabled = true;
+						
+						
+						
 					}else if(currentVal > maxQuantity){
 						currentVal = maxQuantity;
 						input_field.val(currentVal);
+						runUpdate(product_id,currentVal);
+						
+						plus_button.disabled = true;
+						if(minus_button.disabled){
+							minus_button.disabled = false;
+						}
+		
 					}else if(currentVal >= 1 && currentVal <=maxQuantity){
-						webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentVal},
-							function(text,data){
-								alert(text);
-								if(text=="Update item quantity successfully"){
-									location.reload();
-								}
-						})
+						
+						runUpdate(product_id,currentVal);
+						
+						if(plus_button.disabled){
+							plus_button.disabled = false;
+						}
+						
+						if(minus_button.disabled){
+							minus_button.disabled = false;
+						}
+						
+						
 					}
 				}else{
 					alert("Only numeric and integer are accepted");
@@ -147,6 +170,16 @@
 			
 				typeTimeout = setTimeout(function(){updateInput(field_id,product_id,maxQuantity)}, 1000);
 				
+			}
+			
+			function runUpdate(product_id,currentValue){
+				webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentValue},
+							function(text,data){
+								alert(text);
+								if(text=="Update item quantity successfully"){
+									location.reload();
+								}
+						})
 			}
 		</script>
 		
