@@ -19,14 +19,18 @@
 					header("location:index.php");
 				}
 		?>
-		
+	
 		<?php
             include_once "./include/NavigationBar.php"
         ?>
 		
 		<div class="content">
 			<div class="container">
-				
+				<p class="invalidMsg"> <?php if (isset($_SESSION["invalid_message"]))
+												 { 
+													echo $_SESSION["invalid_message"]; 
+												 
+												 }?> </p>
 				<?php include_once "process/list_cart_process.php" ?>
 				
 			
@@ -74,21 +78,22 @@
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
 				var currentVal = parseInt(input_field.val());
-				var plus_button = document.getElementById("plus_button_"+product_id);
+				//var plus_button = document.getElementById("plus_button_"+product_id);
 								
-				if(currentVal>1){
+				//if(currentVal>1){
 					currentVal--;
 					input_field.val(currentVal);
-					if(plus_button.disabled){
+					/*if(plus_button.disabled){
 						plus_button.disabled = false;
-					}
-				}
+					}*/
+				//}
 				
-				if(currentVal <=1){
+				/*if(currentVal <=1){
 					document.getElementById(button_id).disabled = true;
-				}
+				}*/
 				
-				updateInput(field_id,product_id,maxQuantity);
+				//updateInput(field_id,product_id,maxQuantity);
+				runUpdate(product_id,currentVal,maxQuantity);
 			}
 			
 			function addQuantity(product_id,button_id,maxQuantity){
@@ -97,20 +102,21 @@
 				var currentVal = parseInt(input_field.val());
 				var minus_button = document.getElementById("minus_button_"+product_id);
 								
-				if(currentVal<maxQuantity){
+				//if(currentVal<maxQuantity){
 					currentVal++;
 					input_field.val(currentVal);
-					if(minus_button.disabled){
+					/*if(minus_button.disabled){
 						minus_button.disabled = false;
-					}
-				}
+					}*/
+				//}
 				
-				if(currentVal >=maxQuantity){
+				/*if(currentVal >=maxQuantity){
 					document.getElementById(button_id).disabled  = true;
 					
-				}
+				}*/
 				
-				updateInput(field_id,product_id,maxQuantity);
+				//updateInput(field_id,product_id,maxQuantity);
+				runUpdate(product_id,currentVal,maxQuantity);
 			}
 			
 			function updateInput(field_id,product_id,maxQuantity){
@@ -120,11 +126,11 @@
 				var minus_button = document.getElementById("minus_button_"+product_id);
 				var plus_button =  document.getElementById("plus_button_"+product_id);
 				
-				if(Number.isInteger(currentVal)){
+				/*if(Number.isInteger(currentVal)){
 					if(currentVal < 1){
 						currentVal = 1;
 						input_field.val(currentVal);
-						runUpdate(product_id,currentVal);
+						runUpdate(product_id,currentVal,maxQuantity);
 						if(plus_button.disabled){
 							plus_button.disabled = false;
 						}
@@ -134,32 +140,17 @@
 						
 						
 					}else if(currentVal > maxQuantity){
-						currentVal = maxQuantity;
-						input_field.val(currentVal);
-						runUpdate(product_id,currentVal);
 						
-						plus_button.disabled = true;
-						if(minus_button.disabled){
-							minus_button.disabled = false;
-						}
-		
+						runUpdate(product_id,currentVal,maxQuantity);
+					
 					}else if(currentVal >= 1 && currentVal <=maxQuantity){
 						
-						runUpdate(product_id,currentVal);
-						
-						if(plus_button.disabled){
-							plus_button.disabled = false;
-						}
-						
-						if(minus_button.disabled){
-							minus_button.disabled = false;
-						}
-						
+						runUpdate(product_id,currentVal,maxQuantity);
 						
 					}
-				}else{
-					alert("Only numeric and integer are accepted");
-				}
+				}*/
+				
+				runUpdate(product_id,currentVal,maxQuantity);
 			}
 			
 			
@@ -173,14 +164,15 @@
 				typeTimeout = setTimeout(function(){updateInput(field_id,product_id,maxQuantity)}, 1000);
 				
 			}
+			
 			//Perform ajax action and return server response text
-			function runUpdate(product_id,currentValue){
-				webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentValue},
+			function runUpdate(product_id,currentValue,maxQuantity){
+				webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentValue,max_quantity:maxQuantity},
 							function(text,data){
-								alert(text);
-								if(text=="Update item quantity successfully"){
+								
+								
 									location.reload();
-								}
+								
 						})
 			}
 		</script>

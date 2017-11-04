@@ -9,11 +9,6 @@
 		
 		<!-- Form validation Javascript -->
    	 	<script src="assets/js/form_validation.js"></script>
-		<style>
-			.invalidMsg{
-				color:red;
-			}
-		</style>
     </head>
     <body>
         <?php
