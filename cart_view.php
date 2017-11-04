@@ -162,6 +162,8 @@
 				}
 			}
 			
+			
+			//detect when user has stop typing with 1 second and perform checking 
 			function checkFinishTyping(field_id,product_id,maxQuantity){
 			
 				
@@ -171,7 +173,7 @@
 				typeTimeout = setTimeout(function(){updateInput(field_id,product_id,maxQuantity)}, 1000);
 				
 			}
-			
+			//Perform ajax action and return server response text
 			function runUpdate(product_id,currentValue){
 				webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentValue},
 							function(text,data){
