@@ -269,4 +269,7 @@ input[type=number]{
 	width:50%;
 }
 
+.invalidMsg{
+	color:red;
+}
 
