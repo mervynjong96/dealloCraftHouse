@@ -215,7 +215,7 @@
 				{
 					cols:[
 						{ width:140 },
-						{ view:"button", template:"<button class='btn btn-success' id='submitBtn' onClick='submit()' style='width:70px'><?php echo (!isset($_GET["id"]) ? "Add" : "Update") ?></button> <button class='btn btn-danger' style='width:70px' href='javascript:;'>Cancel</button>", width:300 }
+						{ view:"button", template:"<a class='btn btn-success' id='submitBtn' onClick='submit()' style='width:70px'><?php echo (!isset($_GET["id"]) ? "Add" : "Update") ?></a> <a class='btn btn-danger' style='width:70px' href='productManage.php'>Cancel</a>", width:300 }
 					]
 				}
 			];
@@ -329,7 +329,7 @@
                     imgUploader.define('formData',{ action: "add", countUpload:countImgUpload });
                     $$("product_images").send(function(response){
                         if(response.status == "server")
-                            window.location = "index.php";                        
+                            window.location = "productManage.php";                        
                     });
                 }
                 else if(action === "modify")
@@ -339,7 +339,7 @@
                     $$("product_images").send(function(response){
                         console.log(response)
                         if(response.status == "server")
-                            window.location = "index.php";
+                            window.location = "productManage.php";
                     });
                 }
                 else if(action === "delete")
@@ -347,7 +347,7 @@
                     webix.ajax().post("process/upload_images.php", { id:productID, serverData:serverData, action:"delete" }, 
                         function(text, data){   
                             if(text === "success")
-                                window.location = "index.php";
+                                window.location = "productManage.php";
                         })
                 }
             }

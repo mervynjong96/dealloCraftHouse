@@ -3,12 +3,13 @@
 
 	// Check if all fields are set with value
     if( 
-		isset($_POST["product_category"]) 	&& 
-		isset($_POST["product_name"]) 		&& 
-		isset($_POST["product_desc"]) 		&& 		
-		isset($_POST["product_weight"]) 	&& 
-		isset($_POST["product_price"]) 		&& 
-		isset($_POST["product_policy"]) 	
+        isset($_SESSION["login_user"]      ) &&
+		isset($_POST   ["product_category"]) && 
+		isset($_POST   ["product_name"]    ) && 
+		isset($_POST   ["product_desc"]    ) && 		
+		isset($_POST   ["product_weight"]  ) && 
+		isset($_POST   ["product_price"]   ) && 
+		isset($_POST   ["product_policy"]  ) 	
 	) {
         $product_category = mysqli_real_escape_string($conn, $_POST["product_category"]);
         $product_name = mysqli_real_escape_string($conn, $_POST["product_name"]);
@@ -63,7 +64,7 @@
                 '$product_policy',
                 '$product_tags',
                 '$product_stockQty'
-            ) ";
+            ) ";            
         }
         
 		$result = mysqli_query($conn, $query);
@@ -111,9 +112,8 @@
 				$query .= ")";
 				mysqli_query($conn, $query) or die(mysqli_error ($conn));				
 			}*/
-            if(session_id() == '') {
+            if(session_id() == '')
                 session_start();
-            }
             if(!isset($_POST["id"]))
 			     $_SESSION["product_id"] = $insert_id;
 			echo "success";
