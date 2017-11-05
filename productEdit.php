@@ -334,7 +334,6 @@
                 }
                 else if(action === "modify")
                 {
-                    alert("modifying... "+countToUpload)
                     // Upload images if there is new images picked by user through uploader
                     imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData, action:"modify" });
                     $$("product_images").send(function(response){
@@ -347,7 +346,6 @@
                 {
                     webix.ajax().post("process/upload_images.php", { id:productID, serverData:serverData, action:"delete" }, 
                         function(text, data){   
-                        alert(text);
                             if(text === "success")
                                 window.location = "index.php";
                         })
