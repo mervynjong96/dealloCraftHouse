@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2017 at 03:46 PM
+-- Generation Time: Nov 01, 2017 at 05:30 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -29,19 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cart_product` (
-  `add_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `insert_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `userid` varchar(12) NOT NULL,
   `product_quantity` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cart_product`
---
-
-INSERT INTO `cart_product` (`add_datetime`, `product_id`, `userid`, `product_quantity`) VALUES
-('2017-10-28 03:08:01', 3, 'jason503', 1),
-('2017-10-28 03:08:08', 3, 'jason503', 2);
 
 --
 -- Indexes for dumped tables
@@ -51,10 +43,19 @@ INSERT INTO `cart_product` (`add_datetime`, `product_id`, `userid`, `product_qua
 -- Indexes for table `cart_product`
 --
 ALTER TABLE `cart_product`
-  ADD PRIMARY KEY (`add_datetime`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`insert_id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `product_id` (`product_id`) USING BTREE;
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  MODIFY `insert_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
