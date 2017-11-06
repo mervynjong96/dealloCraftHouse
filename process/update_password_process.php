@@ -49,8 +49,6 @@
 					echo "Your password has been updated";
 
 				}
-			}else{
-				echo "The email and/or old password you have entered is incorrect, please try again";
 			}
 		}else{
 			echo "The verfication code you entered is incorrect, please try again";

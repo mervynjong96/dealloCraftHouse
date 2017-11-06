@@ -113,6 +113,21 @@
                                 { view:"text", type:"password", label:"Confirm New Password", name:"matchPassword", invalidMessage:"* Password does not match" }
                             ]
                         },
+							{cols:[
+										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* You are required to enter your verification code",
+							validate:webix.rules.isNumber},
+										{view:"button",value:"Send verification code", width:170,
+										 	click:function(){
+												
+													webix.ajax().post("process/verification_number_process.php",
+															function(text,data){
+													
+															alert (text);
+													})
+												
+											}
+										}
+									]},
                         { 
                             rows: [
                                 { template:"Confirmation", type:"section" },

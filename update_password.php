@@ -43,7 +43,7 @@
 									{ view:"text", type:"password", label:"Confirm New Password", name:"confirmPassword", required:true, invalidMessage:"* Password does not match" ,labelWidth: 180,
 							width:600},
 									{cols:[
-										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* Invalid Verification Code",labelWidth: 180,
+										{view:"text",label:"Verificiation code",type:"text",name:"verification_code",required:true,invalidMessage:"* You are required to enter verification code",labelWidth: 180,
 							width:600,validate:webix.rules.isNumber},
 										{view:"button",value:"Send verification code", width:170,
 										 	click:function(){
