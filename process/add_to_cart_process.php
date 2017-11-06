@@ -21,7 +21,7 @@
 		}else if($new_quantity > $max_quantity){
 			echo "Item quantity has exceed the maximum quantity.";
 		}else{
-			$query = "INSERT INTO $cart_table(userid,product_id,product_quantity)VALUES('$userid','$product_id','$new_quantity') ON DUPLICATE KEY UPDATE product_quantity = product_quantity + '$new_quantity'";
+			$query = "INSERT INTO $cart_table(userid,product_id,product_quantity)VALUES('$userid','$product_id','$new_quantity') ON DUPLICATE KEY UPDATE product_quantity = product_quantity + '$new_quantity' ";
 			$result = mysqli_query($conn,$query);
 			
 			if(mysqli_affected_rows($conn) > 0) {
@@ -33,7 +33,7 @@
 					echo mysqli_error($conn);
 				}
 			}else{
-				echo "Something goes 123 wrong, Please try again later";
+				echo mysqli_error($conn);
 			}
 		}
 		

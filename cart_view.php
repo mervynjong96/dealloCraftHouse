@@ -46,10 +46,13 @@
 		
 		<script>
 			
-			var typeTimeout;
 			
-			var total = parseFloat(0).toFixed(2) ;
-			document.getElementById("total_price").innerHTML=total;
+			if(document.getElementById("total_price") !== null){
+				var typeTimeout;
+			
+				var total = parseFloat(0).toFixed(2) ;
+				document.getElementById("total_price").innerHTML=total;
+			}
 			
 			function sumTotal(value,product_id){
 				if(document.getElementById(product_id).checked){
@@ -62,18 +65,29 @@
 			}
 			
 			function removeItem(product_id){
-				webix.confirm("Do you want to remove this item fom your cart?", function(result){
-					if(result){
-							webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
-							function(text,data){
-								alert(text);
+				webix.confirm({
+							   text:"Do you want to remove this item fom your cart?", 
+							   width:500,
+                    		   type:"alert-error",
+							   callback: function(result){
+									if(result){
+											webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
+											function(text,data){
 
-								if(text=="Remove item successfully"){
-									location.reload();
-								}
-							})
+												if(text=="Remove item successfully"){
 
-					}
+													 webix.alert({
+															text:"The item has been removed from your product list successfully",
+															width:450,
+															callback: function(result){
+																location.reload();
+															}
+														});
+
+												}
+											})
+									}
+							   }
 				});
 			}
 			
