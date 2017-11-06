@@ -26,17 +26,19 @@
 		$result = mysqli_query($conn, $query);
 		
         if($result && $result->num_rows > 0)
-        {
-            echo "<div class='row'>";            
+        {        
             echo 
             "
-                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Product Image</div>
-                <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 cartHeader' style='margin-top:0px'>Product Name</div>
-                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Price</div>
-                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Stock Quantity</div>
-                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Action</div>
+                <div class='row'>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Product Image</div>
+                    <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 cartHeader' style='margin-top:0px'>Product Name</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Price</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Stock Quantity</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Action</div>
+                </div>
+                <hr/>
             ";
-            echo "</div><hr/>";
+            
             while($result_products = mysqli_fetch_assoc($result))        
             {
                 $product_id       =   $result_products["product_id"];

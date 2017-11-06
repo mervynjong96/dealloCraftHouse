@@ -27,7 +27,7 @@
             </h1>
             <?php include_once "process/list_seller_product.php" ?>
         </div>
-        
+        <br/><br/>
         <script>            
             function removeItem(itemID)
             {

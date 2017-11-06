@@ -324,7 +324,15 @@
                     imgUploader.define('formData',{ action: "add", countUpload:countImgUpload });
                     $$("product_images").send(function(response){
                         if(response.status == "server")
-                            window.location = "productManage.php";                        
+                        {
+                            webix.alert({
+                                text:"Your new product has been added successfully!",
+                                width:450,
+                                callback: function(result){
+                                    window.location = 'productManage.php'; 
+                                }
+                            });
+                        }
                     });
                 }
                 // Only perform when there is new image to be upload and image to be removed at the same time
@@ -349,7 +357,8 @@
                 }
             }
                         
-			function submit(){				
+			function submit()
+            {
                 $$("invMsg").hide();
                 var productForm = $$("productRegisterForm");
 				var imgUploader = $$("product_images");
@@ -358,69 +367,90 @@
 				var isFormValid = productForm.validate();
                 
 				if( countImgUpload > 0 && isFormValid )
-				{   
+				{                    
                     <?php 
                         if(isset($_GET["id"])) { 
-                            echo "var productID = ".$_GET['id'];
-                    ?>					
-                            // Standardized naming of different product image(s)					
-                            var data = imgFiles.pull;
-                            var serverData = [];    //store server-side images that is not removed from uploader list
-                            var countToUpload = 0;
-                            for(var key in data)
-                            {  
-                                var filename = data[key].name;
-                                //if the image is identified as server-side resource
-                                if(key <= 5)
-                                    serverData.push(filename);
-                                else
-                                    countToUpload++;
-                            }
-                    
-                            // If only server-side images to be removed but no new images added by user
-                            if(countToUpload === 0 && removedImage.length > 0)
-                                uploadImages("delete",0,productID,countToUpload,serverData);
-                            // If only user add images but no server-side image to be removed
-                            else if(countToUpload > 0)
-                                uploadImages("modify",0,productID,countToUpload,serverData);
-                    <?php
-                            echo "imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData });";
-                            echo "productForm.setValues({id:".$_GET["id"]."},true)";
-                        };
+                            echo "var productID = ".$_GET['id']."\n";
                     ?>
-                    
-					//productForm.setValues({ variation_number: variation_number },true)
-					webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
-						function(text, data){
-                        console.log(text)
-							if(text === "success")
-                                <?php 
-                                    if (!isset($_GET["id"]))
-                                        echo "uploadImages('add',countImgUpload,0,0,'');";
+                    webix.confirm({
+                        text:"Are you sure that you want to modify the product details?<br/>The action cannot be undone once confirmed.", 
+                        width:500,
+                        type:"alert-warning",
+                        callback:function(result){
+                            if(result)
+                            {					
+                                // Standardized naming of different product image(s)					
+                                var data = imgFiles.pull;
+                                var serverData = [];    //store server-side images that is not removed from uploader list
+                                var countToUpload = 0;
+                                for(var key in data)
+                                {  
+                                    var filename = data[key].name;
+                                    //if the image is identified as server-side resource
+                                    if(key <= 5)
+                                        serverData.push(filename);
                                     else
+                                        countToUpload++;
+                                }
+
+                                // If only server-side images to be removed but no new images added by user
+                                if(countToUpload === 0 && removedImage.length > 0)
+                                    uploadImages("delete",0,productID,countToUpload,serverData);
+                                // If only user add images but no server-side image to be removed
+                                else if(countToUpload > 0)
+                                    uploadImages("modify",0,productID,countToUpload,serverData);
+                        
+                                imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData });
+                                
+                                productForm.setValues({id:productID},true);
+                        
+                                webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
+                                    function(text, data)
                                     {
-                                        echo
-                                        "
+                                        if(text === "success")
+                                        {
                                             if( countToUpload > 0 )
                                                 uploadImages('modify',0,productID,countToUpload,serverData);
                                             
-                                            alert('Product details has been modified successfully!');
-                                            window.location = 'productManage.php';
-                                        ";
-                                    }
-                                ?>
-						});        
-				}
-				else {
-					if(countImgUpload === 0)
+                                            webix.alert({
+                                                text:"Product details has been modified successfully!",
+                                                width:450,
+                                                callback: function(result){
+                                                    window.location = 'productManage.php'; 
+                                                }
+                                            });
+                                        }
+                                    });
+                            }
+                        }
+                    });
+                    <?php 
+                    }
+                    else                        
+                        echo
+                        "
+                            //productForm.setValues({ variation_number: variation_number },true)
+                            webix.ajax().post('process/productEdit_process.php', productForm.getValues(),
+                                function(text, data)
+                                {
+                                    if(text === 'success')
+                                        uploadImages('add',countImgUpload,0,0,'');
+                                });                                            
+                        ";
+                        
+                    ?>
+                }
+                else {
+                    if(countImgUpload === 0)
                         $$("noImgInvalidMsg").show();
-					else
-						$$("noImgInvalidMsg").hide();
-                    
+                    else
+                        $$("noImgInvalidMsg").hide();
+
                     $$("invMsg").show();
                     window.location = "#";   //jump to top of page to let user sees the error message 
-				}
-			}
+                }
+            }
+			
             
             <?php require "process/productEdit_getDetails.php"; ?>
 		</script>
