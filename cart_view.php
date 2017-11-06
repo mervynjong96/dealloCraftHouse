@@ -26,11 +26,14 @@
 		
 		<div class="content">
 			<div class="container">
-				<p class="invalidMsg"> <?php if (isset($_SESSION["invalid_message"]))
-												 { 
-													echo $_SESSION["invalid_message"]; 
-												 
-												 }?> </p>
+				<p class="invalidMsg"> 
+					<?php 
+						if (isset($_SESSION["invalid_message"]))
+						 { 
+							echo $_SESSION["invalid_message"]; 
+							 unset ($_SESSION["invalid_message"]);
+						 }
+					?> </p>
 				<?php include_once "process/list_cart_process.php" ?>
 				
 			
@@ -149,8 +152,11 @@
 						
 					}
 				}*/
-				
-				runUpdate(product_id,currentVal,maxQuantity);
+				if(Number.isInteger(currentVal)){
+					runUpdate(product_id,currentVal,maxQuantity);
+				}else{
+					document.getElementsByClassName("invalidMsg")[0].innerHTML= "Only integers and numeric value are allowed";
+				}
 			}
 			
 			
@@ -174,6 +180,11 @@
 									location.reload();
 								
 						})
+			}
+			
+			function checkSelectedItem(selected_products){
+				console.log(selected_products);
+				
 			}
 		</script>
 		
