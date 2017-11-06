@@ -18,8 +18,7 @@
 		
         <div class="container">
             <h1 class="page-header">
-                My Sales Products
-                
+                My Sales Products                
                 <a href='productEdit.php' style='float:right;' id='btnAddProduct' class='btn btn-success'>
                     <span class="glyphicon glyphicon-plus"></span>
                     Add New Product

@@ -35,26 +35,26 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="./assets/images/sample.png" alt="banner1" class="bannerimg" />
+                                <img src="./assets/images/banners/banner_1.jpg" alt="banner1" class="bannerimg" />
                                 <div class="carousel-caption">
-                                    <h3>Promotion 1</h3>
-                                    <p>Promo caption</p>
+                                    <h3 class="promo_header">Anna Marie's</h3>
+                                    <p class="promo_caption">Anna Maries's Creative Craft is finally here!</p>
                                 </div>
                             </div>
 
                             <div class="item">
-                                <img src="./assets/images/sample.png" alt="banner2" class="bannerimg" />
+                                <img src="./assets/images/banners/banner_2.jpg" alt="banner2" class="bannerimg" />
                                 <div class="carousel-caption">
-                                    <h3>Editor Promo 1</h3>
-                                    <p>Promo caption</p>
+                                    <h3 class="promo_header">Meet with Professional Craftsman</h3>
+                                    <p class="promo_caption">Join our community to grab chances to meet with fellow professional craftsman now!</p>
                                 </div>
                             </div>
 
                             <div class="item">
-                                <img src="./assets/images/sample.png" alt="banner3" class="bannerimg" />
+                                <img src="./assets/images/banners/banner_3.jpg" alt="banner3" class="bannerimg" />
                                 <div class="carousel-caption">
-                                    <h3>Promotion 2</h3>
-                                    <p>Promo caption</p>
+                                    <h3 class="promo_header">Exquisite Craft Products</h3>
+                                    <p class="promo_caption">New and fresh craft products are up now!</p>
                                 </div>
                             </div>
                         </div>
