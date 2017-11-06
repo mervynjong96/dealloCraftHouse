@@ -26,10 +26,15 @@
 		$result = mysqli_query($conn, $query);
         if($result->num_rows > 0)
         {
-            $columnName = array("Product Image","Product Name","Price","Stock Quantity","Action");
-            echo "<div class='row'>";
-                foreach($columnName as $c)
-                    echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>$c</div>";
+            echo "<div class='row'>";            
+            echo 
+            "
+                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Product Image</div>
+                <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 cartHeader' style='margin-top:0px'>Product Name</div>
+                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Price</div>
+                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Stock Quantity</div>
+                <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Action</div>
+            ";
             echo "</div><hr/>";
             while($result_products = mysqli_fetch_assoc($result))        
             {
@@ -45,7 +50,7 @@
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
                             <img style='width:100px; heigh:100px;' src='$product_image' alt='Picture of $product_image'/>
                         </div>                        
-                        <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_name</div>
+                        <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3'>$product_name</div>
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_price</div>						
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_stockQty</div>
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>                                
@@ -58,7 +63,19 @@
             }
 		}
         else
-			echo "<p class='emptyCart'>You do not have any registered product yet</p>";
+			echo 
+            "
+                <div style='text-align:center'>
+                    <img src='assets/images/emptyProduct.png'/>
+                    <p>Oops, looks like you do not have anything to sell yet !</p>
+                    <p>Perhaps you want to start your business now?</p>
+                    <p><a href='productEdit.php' class='btn btn-success'>Add My Product</a></p>
+                </div>
+                <script>
+                    // Hide add product button at top when there is no product registered by seller is listed
+                    $('#btnAddProduct').hide();
+                </script>
+            ";
 		
 		mysqli_close($conn);
 	}
