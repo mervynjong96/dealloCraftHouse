@@ -28,7 +28,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h2>Welcome, <?php echo $_SESSION["login_user"]; ?>!</h2>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             <a href="profile_edit.php">
@@ -43,15 +43,9 @@
                             </a>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <a href="product_add.php">
+                            <a href="productManage.php">
                                 <img src="./assets/images/sell.png" alt="" />
-                                <p>Add a Product</p>
-                            </a>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <a href="#">
-                                <img src="./assets/images/edit.png" alt="" />
-                                <p>Edit a Product</p>
+                                <p>My Sales Product</p>
                             </a>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -60,7 +54,7 @@
                                 <p>Sales Analysis</p>
                             </a>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                     </div>
                 </div>

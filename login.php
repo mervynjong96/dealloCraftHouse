@@ -1,8 +1,7 @@
 <?php
 	session_start();
-	if(isset($_SESSION["login_user"])){
+	if(isset($_SESSION["login_user"]))
 		header("location:index.php");
-	}
 ?>
 
 <!DOCTYPE html>
@@ -10,18 +9,13 @@
 	<head>		
         <title>Deallo Craft House - Login</title>
 		
-		<?php
-				include_once "./include/Header.php"
-		?>
+		<?php include_once "./include/Header.php" ?>
 
 		<!-- Form validation Javascript -->
 	</head>
 	
-	<body>
-		
-		<?php
-            include_once "./include/NavigationBar.php"
-        ?>
+	<body>		
+		<?php include_once "./include/NavigationBar.php" ?>
 		
         <div class="container">
             <h1 class="page-header" style='margin-bottom:0px;'>Login</h1>
@@ -31,8 +25,7 @@
             <button class="facebook_button"> <i class="fa fa-facebook-official"></i> Facebook Login</button>
             <button class="google_button"> <i class="fa fa-google"></i> Google Login</button>
             <br/><br/>
-        </div>
-	
+        </div>	
 	
 		<script type="text/javascript" charset="utf-8">
 			
@@ -101,8 +94,6 @@
             });
 		</script>
 		
-		<?php
-            include_once "./include/Footer.php"
-        ?>
+		<?php include_once "./include/Footer.php" ?>
 	</body>
 </html>

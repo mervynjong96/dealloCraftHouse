@@ -1,5 +1,7 @@
 <?php
     require "db_conn.php";
+//var_dump($_SESSION);
+    session_start();
 
 	// Check if all fields are set with value
     if( 
@@ -28,7 +30,7 @@
 		$sql_table = "products";
         $query     = "";
         if(isset($_POST["id"]))
-        {            
+        {
             $product_id = $_POST["id"];
             $query = "UPDATE $sql_table SET 
                 product_category    =  '$product_category', 
@@ -64,15 +66,20 @@
                 '$product_policy',
                 '$product_tags',
                 '$product_stockQty'
-            ) ";            
+            ) ";
+            
+            $result = mysqli_query($conn, $query);
+            $insert_id = mysqli_insert_id($conn);
+            
+            $userid = $_SESSION["login_user"];
+            $query = "INSERT INTO product_seller (product_id, userid) VALUES ( '$insert_id', '$userid' )";
         }
         
 		$result = mysqli_query($conn, $query);
-		$insert_id = mysqli_insert_id($conn);
-		
+        
 		if(mysqli_affected_rows($conn) > 0) {
             /*
-		  // Insert product additional information if product is registered successfully
+		  // Insert product variation information if product is registered successfully
 			// Build query
 			if($insert_id !== "" && $product_stockQty == "")
 			{
@@ -112,8 +119,8 @@
 				$query .= ")";
 				mysqli_query($conn, $query) or die(mysqli_error ($conn));				
 			}*/
-            if(session_id() == '')
-                session_start();
+            
+            // Store new product id and image uploader will get the product id to create new folder for it and put the images into the folder
             if(!isset($_POST["id"]))
 			     $_SESSION["product_id"] = $insert_id;
 			echo "success";

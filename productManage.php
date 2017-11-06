@@ -10,19 +10,25 @@
             if(session_id() == "")
                 session_start();
 
-            if(!isset($_SESSION["login_user"])){
+            if(!isset($_SESSION["login_user"]))
                 header("location:index.php");
-            }
 		?>
 		
 		<?php include_once "./include/NavigationBar.php" ?>
 		
         <div class="container">
-            <h1 class="page-header">My Products</h1>
+            <h1 class="page-header">
+                My Sales Products
+                
+                <a href='productEdit.php' style='float:right;' id='btnAddProduct' class='btn btn-success'>
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add New Product
+                </a>
+            </h1>
             <?php include_once "process/list_seller_product.php" ?>
         </div>
         
-        <script>
+        <script>            
             function removeItem(itemID)
             {
 				webix.confirm({

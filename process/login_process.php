@@ -4,10 +4,8 @@
 	session_start();
 
 	// Check if all fields are set with value
-    if( 
-		isset($_POST["email"]) 				&& 
-		isset($_POST["password"]) 			
-	) {
+    if( isset($_POST["email"]) && isset($_POST["password"]) )
+    {
         $email = mysqli_real_escape_string($conn, $_POST["email"]);
         $password = mysqli_real_escape_string($conn, $_POST["password"]);
    

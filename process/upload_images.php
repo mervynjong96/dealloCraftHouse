@@ -48,8 +48,8 @@
         // Arrange the product images of server-side folder first
         if($action !== "add" && !isset($_SESSION["deleted"]))
         {
-            $_SESSION["deleted"] = 1;
-            $toStoreData = [];
+            $_SESSION["deleted"] = 1;   // avoid calling this scope of function when next round image upload come in
+            $toStoreData = [];          // store the image that client wish to keep in server
 
             $dir = "../assets/images/products/$product_id/";
             if($_POST["serverData"] !== "")
@@ -74,9 +74,16 @@
             {
                 // Delete unwanted image by client at server-side
                 $toDelete = array_diff($serverData, $toStoreData);
-                foreach($toDelete as $fileToDel)
-                    unlink ("$dir$fileToDel");
+                // Unknown bugs here if the number of image to be deleted is 1, hence, conditional is made here
+                if(count($toDelete) === 1)
+                    unlink ($dir.$toDelete[0]);
+                else if(count($toDelete) > 1)
+                    foreach($toDelete as $fileToDel)
+                        unlink ("$dir$fileToDel");
                 
+                $_SESSION["status"] = json_encode($toDelete);
+                $_SESSION["status2"] = json_encode($serverData);
+                $_SESSION["status3"] = json_encode($toStoreData);
                 // Get the current directory files
                 $serverData = getDirFiles($dir);    
                 if(count($serverData) > 0)

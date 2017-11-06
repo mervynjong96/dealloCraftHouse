@@ -2,11 +2,7 @@
 <html>
     <head>
         <title><?php echo (!isset($_GET["id"]) ? "Add My Product" : "Edit My Product") ?></title>
-
-        <?php
-            include_once "./include/Header.php";
-        ?>
-		
+        <?php include_once "./include/Header.php"; ?>		
 		<!-- Form validation Javascript -->
    	 	<script src="assets/js/form_validation.js"></script>
     </head>
@@ -14,6 +10,9 @@
         <?php
             include_once "./include/NavigationBar.php";
             require "process/db_conn.php";
+        
+            if(!isset($_SESSION["login_user"]))
+               header("location:login.php");
         ?>
         
         <div class="content">
@@ -318,6 +317,7 @@
             
             function uploadImages(action,countImgUpload,productID,countToUpload,serverData){                
 				var imgUploader = $$("product_images");
+                // Only perform when adding new product
                 if(action === "add")
                 {
                     // Upload images
@@ -327,7 +327,8 @@
                             window.location = "productManage.php";                        
                     });
                 }
-                else if(action === "modify")
+                // Only perform when there is new image to be upload and image to be removed at the same time
+                else if(action === "modify" && countToUpload !== 0 )
                 {
                     // Upload images if there is new images picked by user through uploader
                     imgUploader.define('formData',{ id:productID, countUpload:countToUpload, serverData:serverData, action:"modify" });
@@ -337,6 +338,7 @@
                             window.location = "productManage.php";
                     });
                 }
+                // Only perform when user deleted image without inserting new images
                 else if(action === "delete")
                 {
                     webix.ajax().post("process/upload_images.php", { id:productID, serverData:serverData, action:"delete" }, 
@@ -390,9 +392,24 @@
 					//productForm.setValues({ variation_number: variation_number },true)
 					webix.ajax().post("process/productEdit_process.php", productForm.getValues(),
 						function(text, data){
-							if(text == "success")
-                                <?php echo (!isset($_GET["id"]) ? "uploadImages('add',countImgUpload,0,0,'');" : "uploadImages('modify',0,productID,countToUpload,serverData);") ?>  
-						});                   
+                        console.log(text)
+							if(text === "success")
+                                <?php 
+                                    if (!isset($_GET["id"]))
+                                        echo "uploadImages('add',countImgUpload,0,0,'');";
+                                    else
+                                    {
+                                        echo
+                                        "
+                                            if( countToUpload > 0 )
+                                                uploadImages('modify',0,productID,countToUpload,serverData);
+                                            
+                                            alert('Product details has been modified successfully!');
+                                            window.location = 'productManage.php';
+                                        ";
+                                    }
+                                ?>
+						});        
 				}
 				else {
 					if(countImgUpload === 0)
@@ -407,8 +424,6 @@
             
             <?php require "process/productEdit_getDetails.php"; ?>
 		</script>
-        <?php
-            include_once "./include/Footer.php";
-        ?>
+        <?php include_once "./include/Footer.php"; ?>
     </body>
 </html>
