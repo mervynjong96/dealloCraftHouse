@@ -120,13 +120,14 @@
 								  </button>
           					</span>
 						</div>
-						<p> Stock left: " . $product['product_stockQty'] . "</p>";
-							?></p>
+						<p> Stock left: " . $product['product_stockQty'] . "</p>
+						</p>";
+							
 									
 								
 									
-								<p><a class="btn btn-success" href="#" onclick=""><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
-						<?php	}?>
+								echo "<p><a class='btn btn-success' href='#' onclick='addToCart(" .$product['product_id'] . ",". $product["product_stockQty"] .")'><span class='glyphicon glyphicon-shopping-cart'></span> Add to Cart</a></p>";
+							}?>
 								
                         <p>Tags: <em><?php echo $product["product_tag"]; ?></em></p>
                     </div>
@@ -178,7 +179,7 @@
         ?>
 		
 		<script>		
-			function minusQuantity(product_id,button_id,maxQuantity){
+			function minusQuantity(product_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
 				var currentVal = parseInt(input_field.val());
@@ -223,12 +224,10 @@
 				
 			}
 			
-			function addToCart(field_id,product_id,maxQuantity){
-				
+			function addToCart(product_id,maxQuantity){
+				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id +"']");
 				var currentVal = parseInt(input_field.val());
-				var minus_button = document.getElementById("minus_button_"+product_id);
-				var plus_button =  document.getElementById("plus_button_"+product_id);
 				
 				/*if(Number.isInteger(currentVal)){
 					if(currentVal < 1){
@@ -257,6 +256,9 @@
 				webix.ajax().post("process/add_to_cart_process.php",{product_id:product_id,item_quantity:currentVal,max_quantity:maxQuantity},
 							function(text,data){
 							document.getElementById("resultAdd").innerHTML = text;
+							if(text == "Item has added to the cart"){
+								setTimeout(location.reload(),1000);
+							}
 				})
 			}
 			
@@ -268,7 +270,7 @@
 				var input_field = $("input[name='"+ field_id +"']");
 				clearTimeout(typeTimeout);
 			
-				typeTimeout = setTimeout(function(){updateInput(field_id,product_id,maxQuantity)}, 1000);
+				typeTimeout = setTimeout(function(){addToCart(product_id,maxQuantity)}, 1000);
 				
 			}
 			
