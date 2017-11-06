@@ -24,7 +24,8 @@
                 products.active = 1
         ";
 		$result = mysqli_query($conn, $query);
-        if($result->num_rows > 0)
+		
+        if($result && $result->num_rows > 0)
         {
             echo "<div class='row'>";            
             echo 

@@ -48,7 +48,7 @@
                                 echo $image;
                                 break;
                             }
-                        ?>" alt="Picture of <?php echo $product["product_name"]; ?>" />
+                        ?>" style='width:400px;height:400px;' alt="Picture of <?php echo $product["product_name"]; ?>" />
                     <div>
                         <h2><?php echo $product["product_name"]; ?></h2>
                         <p>
@@ -90,10 +90,10 @@
                         </p>
                         <p><?php echo $product["product_desc"]; ?></p>
                         
-                        <h3>Size & Colors</h3>
+                        <h3>Size &amp; Colors</h3>
                         <p>Weight of Product: <?php echo $product["product_weight"]; ?>kg</p>
                         
-                        <h3>Shipping & Policies</h3>
+                        <h3>Shipping &amp; Policies</h3>
                         <p>
                             <?php echo $product["product_policy"]; ?>
                         </p>
@@ -107,13 +107,13 @@
 								
 							<h3>Quantity</h3>
 						<p><?php 
-						echo "<div class='input-group'>
+						echo "<div class='input-group' style='width:200px'>
 							<span class='input-group-btn'>
 								  <button type='button' class='btn btn-default btn-number' id='minus_button_" . $product['product_id'] . "' onclick='minusQuantity(". $product['product_id'] .",this.id,". $product["product_stockQty"] . ")'>
 									  <span class='glyphicon glyphicon-minus'</span>
 								  </button>
           					</span>
-        						  <input type='text' class='form-control input-number' name='product_quantity_".$product['product_id'] . "' value='0' onkeydown='checkFinishTyping(this.name,". $product['product_id'] .",". $product["product_stockQty"] . ")'/>
+        						  <input type='text' class='form-control input-number' name='product_quantity_".$product['product_id'] . "' style='width:200px' value='0' onkeydown='checkFinishTyping(this.name,". $product['product_id'] .",". $product["product_stockQty"] . ")'/>
          					 <span class='input-group-btn'>
 								  <button type='button' class='btn btn-default btn-number'  id='plus_button_" . $product['product_id'] . "' onclick='addQuantity(". $product['product_id'] .",this.id,". $product["product_stockQty"] . ")'>
 									  <span class='glyphicon glyphicon-plus'></span>
