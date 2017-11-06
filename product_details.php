@@ -35,7 +35,7 @@
         <div class="content">
             <div class="container">
                 
-				<span id="resultAdd"></span>
+				<span class="invalidMsg"></span>
 				
                 <div class="well productdetail">
                     <img class="img-responsive" src="
@@ -113,7 +113,7 @@
 									  <span class='glyphicon glyphicon-minus'</span>
 								  </button>
           					</span>
-        						  <input type='text' class='form-control input-number' name='product_quantity_".$product['product_id'] . "' style='width:200px' value='0' onkeydown='checkFinishTyping(this.name,". $product['product_id'] .",". $product["product_stockQty"] . ")'/>
+        						  <input type='text' class='form-control input-number' name='product_quantity_".$product['product_id'] . "' style='width:200px' value='0' />
          					 <span class='input-group-btn'>
 								  <button type='button' class='btn btn-default btn-number'  id='plus_button_" . $product['product_id'] . "' onclick='addQuantity(". $product['product_id'] .",this.id,". $product["product_stockQty"] . ")'>
 									  <span class='glyphicon glyphicon-plus'></span>
@@ -179,6 +179,9 @@
         ?>
 		
 		<script>		
+			
+			var typeTimeout;
+			
 			function minusQuantity(product_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
@@ -255,24 +258,23 @@
 				
 				webix.ajax().post("process/add_to_cart_process.php",{product_id:product_id,item_quantity:currentVal,max_quantity:maxQuantity},
 							function(text,data){
-							document.getElementById("resultAdd").innerHTML = text;
+
 							if(text == "Item has added to the cart"){
-								setTimeout(location.reload(),1000);
+								
+								 webix.alert({
+									text:"The item has been added to your cart successfully",
+									width:450,
+									callback: function(result){
+											location.reload();
+											}
+									});
+							}else{
+								document.getElementsByClassName("invalidMsg")[0].innerHTML = text;
 							}
 				})
 			}
 			
 			
-			//detect when user has stop typing with 1 second and perform checking 
-			function checkFinishTyping(field_id,product_id,maxQuantity){
-			
-				
-				var input_field = $("input[name='"+ field_id +"']");
-				clearTimeout(typeTimeout);
-			
-				typeTimeout = setTimeout(function(){addToCart(product_id,maxQuantity)}, 1000);
-				
-			}
 			
 		</script>
     </body>
