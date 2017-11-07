@@ -277,6 +277,11 @@
 	padding: 88px 0 100px 156px;
 }
 
+.cartProductImg, .checkoutProductImg {
+    width:155px;
+    height:155px;
+}
+
 input[type=number]{
 	width:50%;
 }

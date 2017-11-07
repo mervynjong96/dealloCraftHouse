@@ -58,7 +58,7 @@
 					echo "<div class='row'>";
 					echo "<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'> <input type='checkbox' name='". $result_products["product_id"] . "' id='checkbox_". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "' onclick='sumTotal(this.value,this.id)'/> </div>";
 					
-					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <img class='list-group-image productimg' src='" .  $product_image . "' alt='Picture of" . $result_products["product_name"] . "' /> </div>";
+					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <img class='list-group-image cartProductImg' src='" .  $product_image . "' alt='Picture of" . $result_products["product_name"] . "' /> </div>";
 					
 					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . $result_products["product_name"] . "</div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"],2,'.','') . "</div>
