@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2017 at 05:30 PM
+-- Generation Time: Nov 07, 2017 at 10:52 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cart_product` (
-  `insert_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `userid` varchar(12) NOT NULL,
   `product_quantity` int(10) NOT NULL
@@ -43,19 +42,9 @@ CREATE TABLE `cart_product` (
 -- Indexes for table `cart_product`
 --
 ALTER TABLE `cart_product`
-  ADD PRIMARY KEY (`insert_id`),
   ADD KEY `userid` (`userid`),
   ADD KEY `product_id` (`product_id`) USING BTREE;
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cart_product`
---
-ALTER TABLE `cart_product`
-  MODIFY `insert_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
