@@ -15,7 +15,7 @@
 		?>
 		
 		<?php include_once "./include/NavigationBar.php" ?>
-		
+		<div class="content">
         <div class="container">
             <h1 class="page-header">
                 My Sales Products                
@@ -25,6 +25,7 @@
                 </a>
             </h1>
             <?php include_once "process/list_seller_product.php" ?>
+        </div>
         </div>
         <br/><br/>
         <script>            
