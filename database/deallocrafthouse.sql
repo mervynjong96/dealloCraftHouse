@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2017 at 03:51 PM
+-- Generation Time: Nov 07, 2017 at 11:02 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -38,6 +38,19 @@ CREATE TABLE IF NOT EXISTS `account` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart_product`
+--
+
+DROP TABLE IF EXISTS `cart_product`;
+CREATE TABLE IF NOT EXISTS `cart_product` (
+  `product_id` int(10) NOT NULL,
+  `userid` varchar(12) NOT NULL,
+  `product_quantity` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -47,16 +60,16 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_category` int(11) NOT NULL,
   `product_name` varchar(150) NOT NULL,
   `product_desc` varchar(750) NOT NULL,
-  `product_weight` decimal(10,0) NOT NULL,
+  `product_weight` decimal(10,2) NOT NULL,
   `product_price` decimal(10,2) NOT NULL,
-  `product_shipping` varchar(200) DEFAULT NULL,
   `product_policy` varchar(500) NOT NULL,
   `product_rating` decimal(3,2) DEFAULT NULL,
   `product_tag` varchar(150) DEFAULT NULL,
   `product_stockQty` int(11) DEFAULT NULL,
+  `product_qtyOnHold` int(11) NOT NULL,
   `product_quantity_sold` int(50) DEFAULT NULL,
   `product_date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `approved` tinyint(1) NOT NULL DEFAULT '0'
+  `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,6 +98,20 @@ CREATE TABLE IF NOT EXISTS `product_review` (
   `product_rating` int(1) NOT NULL,
   `review_desc` varchar(500) NOT NULL,
   `review_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_seller`
+--
+
+DROP TABLE IF EXISTS `product_seller`;
+CREATE TABLE IF NOT EXISTS `product_seller` (
+  `product_id` int(50) NOT NULL,
+  `userid` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,6 +146,20 @@ CREATE TABLE IF NOT EXISTS `product_variation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transaction_products`
+--
+
+DROP TABLE IF EXISTS `transaction_products`;
+CREATE TABLE IF NOT EXISTS `transaction_products` (
+  `transaction_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userinfo`
 --
 
@@ -131,6 +172,20 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
   `contact_number` varchar(20) NOT NULL,
   `shipping_address` varchar(256) NOT NULL,
   `postcode` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_transactions`
+--
+
+DROP TABLE IF EXISTS `user_transactions`;
+CREATE TABLE IF NOT EXISTS `user_transactions` (
+  `transaction_id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `total_amount` decimal(10,0) NOT NULL,
+  `date_paid` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -146,6 +201,13 @@ ALTER TABLE `account`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  ADD KEY `userid` (`userid`),
+  ADD KEY `product_id` (`product_id`) USING BTREE;
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -156,6 +218,13 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_category`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_seller`
+--
+ALTER TABLE `product_seller`
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `product_variation`
@@ -172,6 +241,12 @@ ALTER TABLE `userinfo`
   ADD UNIQUE KEY `userid` (`userid`);
 
 --
+-- Indexes for table `user_transactions`
+--
+ALTER TABLE `user_transactions`
+  ADD PRIMARY KEY (`transaction_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -185,6 +260,22 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user_transactions`
+--
+ALTER TABLE `user_transactions`
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  ADD CONSTRAINT `cart_product_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `cart_product_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `account` (`userid`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
