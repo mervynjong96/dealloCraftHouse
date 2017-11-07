@@ -37,7 +37,7 @@
                             </a>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <a href="#">
+                            <a href="transaction_history.php">
                                 <img src="./assets/images/history.png" alt="" />
                                 <p>Transaction History</p>
                             </a>
