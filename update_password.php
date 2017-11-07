@@ -47,7 +47,7 @@
 							width:600,validate:webix.rules.isNumber},
 										{view:"button",value:"Send verification code", width:170,
 										 	click:function(){
-												if($$("email").validate()){
+												if($$("email").validate() && $$("verification_code").validate()){
 													webix.ajax().post("process/verification_number_process.php",$$("updatePasswordForm").getValues(),
 															function(text,data){
 													
@@ -85,7 +85,8 @@
 						elements: updatePasswordContent,
 						rules:{
 							"newPassword"          : function(value,data,name){ return validatePassword(value,data,name,this) },
-							"confirmPassword"     : function(value){ return this.getValues().newPassword === value }
+							"confirmPassword"     : function(value){ return this.getValues().newPassword === value },
+							"verification_code" : webix.rules.isNumber
 						},
 
 					}
