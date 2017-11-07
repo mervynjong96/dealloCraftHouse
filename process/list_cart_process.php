@@ -50,8 +50,8 @@
 				<hr/>";
 				while($result_products = mysqli_fetch_assoc($result)){
 					
-					$directory = "./assets/images/products/" . $result_products["product_id"];
-					$product_image = "";
+					//$directory = "./assets/images/products/" . $result_products["product_id"];
+				
 					$img_dir          =   "./assets/images/products/" . $result_products["product_id"];
 					$product_image    =   glob("$img_dir/a.*", GLOB_BRACE)[0];
 					

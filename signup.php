@@ -16,10 +16,19 @@
         <?php include_once "./include/NavigationBar.php"
         ?>
 	
+<<<<<<< HEAD
         <div class="content container">
             <h1 class="page-header" style='margin-bottom:0px;'>Sign Up</h1>
                 <div id="registerForm"></div>
         </div>	
+=======
+        <div class="content">
+            <div class="container">
+                <h2 class="page-header" style='margin-bottom:0px;'>Sign Up</h2>
+                    <div id="registerForm"></div>
+            </div>	
+        </div>
+>>>>>>> 1583f78ffea4bac64ee2fc53ab547415ccb1082f
 		
 		<script type="text/javascript" charset="utf-8">
 			$.ajaxSetup({

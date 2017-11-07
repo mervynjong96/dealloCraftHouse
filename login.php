@@ -16,6 +16,7 @@
 	
 	<body>		
 		<?php include_once "./include/NavigationBar.php" ?>
+<<<<<<< HEAD
 		
         <div class="content container">
             <h1 class="page-header" style='margin-bottom:0px;'>Login</h1>
@@ -26,6 +27,19 @@
             <button class="google_button"> <i class="fa fa-google"></i> Google Login</button>
             <br/><br/>
         </div>	
+=======
+		<div class="content">
+            <div class="container">
+                <h2 class="page-header" style='margin-bottom:0px;'>Login</h2>
+                <div id="login_form_container"></div>
+                <p style='font-size:20px; border-bottom:1px solid #eee; margin-bottom:12px;'> Login With</p>
+
+                <button class="facebook_button"> <i class="fa fa-facebook-official"></i> Facebook Login</button>
+                <button class="google_button"> <i class="fa fa-google"></i> Google Login</button>
+                <br/><br/>
+            </div>
+        </div>
+>>>>>>> 1583f78ffea4bac64ee2fc53ab547415ccb1082f
 	
 		<script type="text/javascript" charset="utf-8">
 			
