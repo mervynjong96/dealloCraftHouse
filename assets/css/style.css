@@ -179,7 +179,14 @@
     color: whitesmoke;
 }
 
+.indexImages{
+    text-align: center;
+}
 
+.indexImages img{
+    width:220px;
+    height:220px;
+}
 
 .product .list-productpicture {
     margin-top: 10px;
@@ -294,13 +301,4 @@ input[type=number]{
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 0px;
-}
-
-.indexImages{
-    text-align: center;
-}
-
-.indexImages img{
-    width:220px;
-    height:220px;
 }
