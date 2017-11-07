@@ -23,7 +23,6 @@
         
         <div class="content">
             <div class="container">
-                <h1>Products</h1>
                 <br/>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">

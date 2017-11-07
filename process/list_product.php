@@ -34,8 +34,14 @@ function list_product($list,$filter) {
                             <img class="list-group-image productimg" src="./assets/images/products/<?php echo $products["product_id"]; ?>" alt="Picture of <?php echo $products["product_name"]; ?>" />
                         -->                        
                         <?php
-                            $img_dir  =   "./assets/images/products/" . $products["product_id"];
-                            $image    =   glob("$img_dir/a.*", GLOB_BRACE)[0];                            
+                            $img_dir  =  "./assets/images/products/" . $products["product_id"];
+                            $image    = "";
+                            $image    =  glob("$img_dir/a.*", GLOB_BRACE);      
+                            if($image)
+                                $image = $image[0];
+                            else
+                                $image = "";
+                                         
                             echo 
                             "
                                 <div class='indexImages'>

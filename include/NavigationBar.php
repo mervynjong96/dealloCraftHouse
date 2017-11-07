@@ -1,5 +1,6 @@
 <?php 
-	session_start();
+    if(!isset($_SESSION))
+	   session_start();
 	if(isset($_SESSION["login_user"])){
 		include_once "./process/count_cart_process.php";
 	}
@@ -20,12 +21,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<?php 
 					if(isset($_SESSION["login_user"])){
-						if(isset($_SESSION["items_in_cart"])){
-							echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout "  . $_SESSION["items_in_cart"] ."</a></li>";
-
-						}else{
-							echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Checkout </a></li>";
-						}
+						if(isset($_SESSION["items_in_cart"]))
+							echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Cart ["  . $_SESSION["items_in_cart"] ."]</a></li>";
+						else
+							echo "<li><a href='cart_view.php'><span class='glyphicon glyphicon-shopping-cart'></span> Cart </a></li>";
 					}
 				?>
 				<li class="active"><a href="index.php">Home</a></li>
@@ -41,8 +40,6 @@
 						echo "<li><a href='process/logout_process.php'> <span class='glyphicon glyphicon-log-out'> </span> Logout </a></li>";
 						echo "</ul>";
 						echo "</li>";
-						
-
 					}else{
 						echo "<li><a href='login.php'>Login</a></li>";
 						// echo "<li><a href='signup.php'>Sign Up</a></li>";
