@@ -4,9 +4,8 @@
 	$total = 0;
 
 	// Check if all fields are set with value
-    if( 
-		isset($_SESSION["login_user"])
-	) {
+    if(  isset($_SESSION["login_user"]) )
+    {
         $userid = mysqli_real_escape_string($conn, $_SESSION["login_user"]);
       
 		//Count number of items in the database that matches userid
@@ -57,7 +56,7 @@
 					$product_image    =   glob("$img_dir/a.*", GLOB_BRACE)[0];
 					
 					echo "<div class='row'>";
-					echo "<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'> <input type='checkbox' name='checkbox_". $result_products["product_id"] . "' id='checkbox_". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "' onclick='sumTotal(this.value,this.id)'/> </div>";
+					echo "<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'> <input type='checkbox' name='". $result_products["product_id"] . "' id='checkbox_". $result_products["product_id"] . "' value='" . $result_products["product_price"]*$result_products["product_quantity"] . "' onclick='sumTotal(this.value,this.id)'/> </div>";
 					
 					echo "<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'> <img class='list-group-image productimg' src='" .  $product_image . "' alt='Picture of" . $result_products["product_name"] . "' /> </div>";
 					
@@ -82,22 +81,20 @@
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>" . number_format((float)$result_products["product_price"]*$result_products["product_quantity"],2,'.','') . "</div>
 						<div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><a href='#' onclick='removeItem(" . $result_products['product_id'] .")'><span class='glyphicon glyphicon-remove'></span></a></div>";
 			
-					echo "</div> <hr/>";	
-					
-					$selected_products[] = $result_products["product_id"];
-					
+					echo "</div> <hr/>";					
 				}
 				
-				$selected_products = json_encode($selected_products);
-				echo "	<p class='alignRight'> Total price: <span id='total_price'></span> </p>
-				<p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onclick='checkSelectedItem($selected_products)'>Checkout</a> </p>";
-			}else{
-				
-				echo "Something goes wrong, please try again later";
+				echo "
+                    <p class='alignRight'> Total price: <span id='total_price'></span></p>
+                    <p class='alignRight'> <a class='btn btn-success' style='margin-right:10px;' onclick='checkout()'>Checkout</a> </p>
+                ";
 			}
-		}else{
-			echo "<p class='emptyCart'> Currently there is nothing in your cart :) </p>";
+            else
+				echo "Something goes wrong, please try again later";
+			
 		}
+        else
+			echo "<p class='emptyCart'> Currently there is nothing in your cart :) </p>";
 		
 		mysqli_close($conn);
 	}

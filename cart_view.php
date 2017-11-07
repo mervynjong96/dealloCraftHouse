@@ -45,8 +45,6 @@
         ?>
 		
 		<script>
-			
-			
 			if(document.getElementById("total_price") !== null){
 				var typeTimeout;
 			
@@ -73,17 +71,14 @@
 									if(result){
 											webix.ajax().post("process/remove_item_from_cart_process.php",{remove_product_id:product_id},
 											function(text,data){
-
 												if(text=="Remove item successfully"){
-
-													 webix.alert({
-															text:"The item has been removed from your product list successfully",
-															width:450,
-															callback: function(result){
-																location.reload();
-															}
-														});
-
+                                                 webix.alert({
+                                                        text:"The item has been removed from your cart list successfully",
+                                                        width:450,
+                                                        callback: function(result){
+                                                            location.reload();
+                                                        }
+                                                    });
 												}
 											})
 									}
@@ -189,18 +184,24 @@
 			function runUpdate(product_id,currentValue,maxQuantity){
 				webix.ajax().post("process/updated_item_in_cart_process.php",{edit_product_id:product_id,new_quantity:currentValue,max_quantity:maxQuantity},
 							function(text,data){
-								
-								
-									location.reload();
-								
+									location.reload();								
 						})
 			}
 			
-			function checkSelectedItem(selected_products){
-				console.log(selected_products);
-				
+			function checkout()
+            {           
+                // Get selected item ID
+                var checkedItemID = [];
+                $(":checkbox").each(function () {
+                    var ischecked = $(this).is(":checked");
+                    if (ischecked) {
+                        checkedItemID.push($(this)[0].name);
+                    }
+                });
+                
+                // And POST the selected item ID and redirect to checkout page
+                webix.send('checkout.php', { checkedItemID: JSON.stringify(checkedItemID) }, "post");
 			}
-		</script>
-		
+		</script>		
 	</body>
 </html>
