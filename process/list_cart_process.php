@@ -94,7 +94,11 @@
 			
 		}
         else
-			echo "<p class='emptyCart'> Currently there is nothing in your cart :) </p>";
+			echo "<div style='text-align:center;margin-top:50px;'>
+                    <img src='assets/images/cart-empty.png'/>
+                    <p style='margin-top:50px'>Oops, looks like you do not have anything in your cart yet !</p>
+                    <p style='margin-top:30px'><a href='index.php' class='btn btn-success'>Continue Shopping</a></p>
+                </div>";
 		
 		mysqli_close($conn);
 	}
