@@ -29,7 +29,7 @@
 
             $offset = 0;
             $query = mysqli_query($conn, "SELECT * FROM products WHERE product_id = $id");
-            $product = mysqli_fetch_array($query);
+            $product = mysqli_fetch_assoc($query);
         ?>
         
         <div class="content">
@@ -38,17 +38,47 @@
 				<span class="invalidMsg"></span>
 				
                 <div class="well productdetail">
-                    <img class="img-responsive" src="
+					<div class="alignCenter">
+						<p>
+                    <img id="indexImage" src="
                         <?php
-                            $directory = "./assets/images/products/" . $product["product_id"];
+                           /* $directory = "./assets/images/products/" . $product["product_id"];
                             $images = glob("$directory/*.{jpg,png,bmp}", GLOB_BRACE);
 
                             foreach($images as $image)
                             {
                                 echo $image;
                                 break;
-                            }
+                            }*/
+													 
+							//$directory = "./assets/images/products/" . $product["product_id"];
+				
+							$img_dir          =   "./assets/images/products/" . $product["product_id"];
+							$product_image    =   glob("$img_dir/a.*", GLOB_BRACE)[0];
+							echo $product_image;
                         ?>" style='width:400px;height:400px;' alt="Picture of <?php echo $product["product_name"]; ?>" />
+					</p>
+					
+						<p>
+							<?php
+								$directory = "./assets/images/products/" . $product["product_id"];
+								$images = glob("$directory/*.*", GLOB_BRACE);
+
+								foreach($images as $image)
+								{
+									if($image == $product_image){
+										echo "<img src='" .$image  ."' style='width:50px;height:50px;margin-left:30px;' alt='Picture of'" . $product['product_name'] . "'
+										class='selected thumbnail_image'/>";
+									}else{
+										echo "<img src='" .$image  ."' style='width:50px;height:50px;margin-left:30px;' alt='Picture of'" . $product['product_name'] . "' class='thumbnail_image'/>";
+									}
+								}
+
+								//$directory = "./assets/images/products/" . $product["product_id"];
+							?>
+						</p>
+						</div>
+					
                     <div>
                         <h2><?php echo $product["product_name"]; ?></h2>
                         <p>
@@ -180,8 +210,6 @@
 		
 		<script>		
 			
-			var typeTimeout;
-			
 			function minusQuantity(product_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
@@ -273,6 +301,21 @@
 							}
 				})
 			}
+			
+		/*	function changeImage(image_src){
+				console.log(image_src);
+				
+				if(document.getElementById("indexImage").src != image_src){
+					document.getElementById("indexImage").src = image_src;
+					
+				}
+			}*/
+			
+			$(".thumbnail_image").click(function(){
+					$('#indexImage').attr('src',this.src);
+					$('.selected').removeClass('selected');
+					$(this).addClass('selected');		
+										});
 			
 			
 			
