@@ -2,7 +2,7 @@
     if(!isset($_SESSION))
 	   session_start();
 	if(isset($_SESSION["login_user"])){
-		include_once "./process/count_cart_process.php";
+		include "./process/count_cart_process.php";
 	}
 ?>
 

@@ -1,6 +1,6 @@
 <?php
     require "db_conn.php";
-//var_dump($_SESSION);
+
     session_start();
 
 	// Check if all fields are set with value

@@ -17,7 +17,7 @@
 	<body>		
 		<?php include_once "./include/NavigationBar.php" ?>
 		
-        <div class="container">
+        <div class="content container">
             <h1 class="page-header" style='margin-bottom:0px;'>Login</h1>
             <div id="login_form_container"></div>
             <p style='font-size:20px; border-bottom:1px solid #eee; margin-bottom:12px;'> Login With</p>

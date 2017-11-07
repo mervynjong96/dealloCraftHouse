@@ -10,16 +10,13 @@
     <head>
         <title>Deallo Craft House - Register</title>
 
-        <?php
-            include_once "./include/Header.php"
-        ?>		
+        <?php include_once "./include/Header.php" ?>		
     </head>
     <body>
-        <?php
-            include_once "./include/NavigationBar.php"
+        <?php include_once "./include/NavigationBar.php"
         ?>
 	
-        <div class="container">
+        <div class="content container">
             <h1 class="page-header" style='margin-bottom:0px;'>Sign Up</h1>
                 <div id="registerForm"></div>
         </div>	

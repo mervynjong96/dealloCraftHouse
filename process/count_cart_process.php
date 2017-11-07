@@ -5,9 +5,7 @@
 		session_start();
 
 	// Check if all fields are set with value
-    if( 
-		isset($_SESSION["login_user"])
-	) {
+    if( isset($_SESSION["login_user"]) ) {
         $userid = mysqli_real_escape_string($conn, $_SESSION["login_user"]);
       
 		//Count number of items in the database that matches userid
