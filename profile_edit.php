@@ -116,6 +116,18 @@
                         { 
                             rows: [
                                 { template:"Confirmation", type:"section" },
+                                { cols:[
+                                        { view:"text", label:"Verificiation code", type:"text", name:"verification_code", invalidMessage:"* Invalid Verification Code" },
+                                        { view:"button", value:"Send verification code", width: 250,
+                                            click:function(){
+                                                webix.ajax().post("process/verification_number_process.php", $$("profile_edit").getValues(),
+                                                        function(text,data){
+                                                        alert (text);
+                                                })
+                                            }
+                                        }
+                                    ]
+                                },
                                 {
                                     margin: 5,
                                     cols: [
@@ -171,7 +183,8 @@
                                     "gender"            : webix.rules.isChecked,
                                     "phone_number"      : function(value,data,name){ return validatePhone(value,data,name,this) },
                                     "shipping_address"  : webix.rules.isNotEmpty,
-                                    "postcode"          : function(value,data,name){ return validatePostcode(value,data,name,this) }
+                                    "postcode"          : function(value,data,name){ return validatePostcode(value,data,name,this) },
+                                    "verification_code" : webix.rules.isNumber
                                 }
                             }
                         ]
@@ -189,7 +202,7 @@
                     function submit(){
                         var profile_edit = $$("profile_edit");
                         if(profile_edit.validate())	{
-                            webix.ajax().post("process/update_process.php", profile_edit.getValues(),
+                            webix.ajax().post("process/update_profile_process.php", $$("profile_edit").getValues(),
                                 function(text, data){
                                     alert(text);					
                                     if(text == "Profile Saved Successfully!")	
