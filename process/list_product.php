@@ -32,18 +32,18 @@ function list_product($list,$filter) {
                     <a href="product_details.php?id=<?php echo $products["product_id"]; ?>">
                         <!--
                             <img class="list-group-image productimg" src="./assets/images/products/<?php echo $products["product_id"]; ?>" alt="Picture of <?php echo $products["product_name"]; ?>" />
-                        -->
-                        <img class="list-group-image productimg" src="
+                        -->                        
                         <?php
-                            $directory = "./assets/images/products/" . $products["product_id"];
-                            $images = glob("$directory/*.{jpg,png,jpeg}", GLOB_BRACE);
-
-                            foreach($images as $image)
-                            {
-                                echo $image;
-                                break;
-                            }
-                        ?>" alt="Picture of <?php echo $products["product_name"]; ?>" />
+                            $img_dir  =   "./assets/images/products/" . $products["product_id"];
+                            $image    =   glob("$img_dir/a.*", GLOB_BRACE)[0];                            
+                            echo 
+                            "
+                                <div class='indexImages'>
+                                    <img class='list-group-image productimg' src='$image' alt='Picture of ".$products["product_name"]. "'/>
+                                </div>
+                            ";
+                        ?>
+                        
                     </a>
                 </div>
                 <div class="list-productdetails">

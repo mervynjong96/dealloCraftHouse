@@ -61,5 +61,6 @@
 </style>
 <script>
     /* All Webix form must attach with id:formContent to overwrite the CSS of Webix form elements content */
-    webix.html.addCss( $$("formContent").$view, "formCSS");
+    if($$("formContent"))
+        webix.html.addCss( $$("formContent").$view, "formCSS");
 </script>
