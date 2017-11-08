@@ -34,7 +34,6 @@
                 ";
 				while($result_products = mysqli_fetch_assoc($result))
                 {
-                    echo json_encode($result_products);
 					$img_dir          = "./assets/images/products/" . $result_products["product_id"];
 					$product_id       = $result_products["product_id"];
 					$product_image    = glob("$img_dir/a.*", GLOB_BRACE)[0];
