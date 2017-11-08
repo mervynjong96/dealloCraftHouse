@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2017 at 11:02 AM
+-- Generation Time: Nov 08, 2017 at 09:02 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 DROP TABLE IF EXISTS `cart_product`;
 CREATE TABLE IF NOT EXISTS `cart_product` (
+  `id` int(11) NOT NULL,
   `product_id` int(10) NOT NULL,
   `userid` varchar(12) NOT NULL,
   `product_quantity` int(10) NOT NULL
@@ -63,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_weight` decimal(10,2) NOT NULL,
   `product_price` decimal(10,2) NOT NULL,
   `product_policy` varchar(500) NOT NULL,
-  `product_rating` decimal(3,2) DEFAULT NULL,
-  `product_tag` varchar(150) DEFAULT NULL,
-  `product_stockQty` int(11) DEFAULT NULL,
-  `product_qtyOnHold` int(11) NOT NULL,
-  `product_quantity_sold` int(50) DEFAULT NULL,
+  `product_rating` decimal(3,2) NOT NULL DEFAULT '0.00',
+  `product_tag` varchar(150) DEFAULT '',
+  `product_stockQty` int(11) NOT NULL DEFAULT '0',
+  `product_qtyOnHold` int(11) NOT NULL DEFAULT '0',
+  `product_quantity_sold` int(11) NOT NULL DEFAULT '0',
   `product_date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -184,7 +185,7 @@ DROP TABLE IF EXISTS `user_transactions`;
 CREATE TABLE IF NOT EXISTS `user_transactions` (
   `transaction_id` int(11) NOT NULL,
   `user_id` varchar(50) NOT NULL,
-  `total_amount` decimal(10,0) NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
   `date_paid` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -204,6 +205,7 @@ ALTER TABLE `account`
 -- Indexes for table `cart_product`
 --
 ALTER TABLE `cart_product`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `userid` (`userid`),
   ADD KEY `product_id` (`product_id`) USING BTREE;
 
@@ -211,7 +213,8 @@ ALTER TABLE `cart_product`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `product_category`
@@ -250,6 +253,11 @@ ALTER TABLE `user_transactions`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
