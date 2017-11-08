@@ -23,19 +23,19 @@
         
         <div class="content">
             <div class="container">
-                <h3>Transaction History</h3>
+                <h2 class="page-header">My Transaction History</h2>
                 
                 <div id="history"></div>
-                
                 <br/>
-                <a class='btn btn-primary' href="profile.php">Return to Profile</a>
+                <div style="text-align:center;"><a class='btn btn-primary' href="profile.php">Return to Profile</a></div>
             </div>
         </div>
         
         <?php
             require "process/db_conn.php";
-
-            $query = "SELECT user_transactions.transaction_id, user_transactions.date_paid, user_transactions.total_amount, transaction_products.product_id, products.product_name, transaction_products.quantity, transaction_products.price FROM user_transactions LEFT JOIN transaction_products ON user_transactions.transaction_id = transaction_products.transaction_id LEFT JOIN products ON transaction_products.product_id = products.product_id WHERE user_transactions.userid = '$_SESSION[login_user]' ORDER BY user_transactions.transaction_id DESC";
+        
+            $user_id = $_SESSION["login_user"];
+            $query = "SELECT * from user_transactions where user_id = '$user_id'";
             $result = mysqli_query($conn, $query);
             $rows = array();
             while($i = mysqli_fetch_assoc($result)) {
@@ -52,20 +52,22 @@
                     container: "history",
                     view: "datatable",
                     columns: [
-                        { id:"transaction_id", header:"Transaction ID", width: 125 },
-                        { id:"date_paid", header:"Date of Purchase", width: 175, format:webix.Date.dateToStr("%H:%i - %m/%d/%Y") },
-                        { id:"product_id", header:"Product ID", width: 100 },
-                        { id:"product_name", header:"Product Purchased", width: 400 },
-                        { id:"quantity", header:"Quantity", width: 100 },
-                        { id:"price", header:"Price", width: 100, format:function(value){ 
-                            value = "RM " + value;
-                            return value; } },
-                        { id:"total_amount", header:"Total Cost", width: 100, /* format:webix.i18n.priceFormat */ format:function(value){ 
-                            value = "RM " + value;
-                            return value; }
+                        { id:"transaction_id", header:"Transaction ID", sort:"text", fillspace:0.4 },
+                        { id:"date_paid", header:"Date of Purchase",  fillspace:true, sort:"text", format:webix.Date.dateToStr("%H:%i - %m/%d/%Y") },
+//                        { id:"product_id", header:"Product ID", width: 100 },
+//                        { id:"product_name", header:"Product Purchased", width: 400 },
+//                        { id:"quantity", header:"Quantity", width: 100 },
+//                        { id:"price", header:"Price", width: 100, format:function(value){ 
+//                            value = "RM " + value;
+//                            return value; } },
+                        { id:"total_amount", header:"Total Cost", sort:"text", fillspace:true , format:webix.i18n.priceFormat },
+                        { id:"view_transaction", header:"View Transaction", fillspace:true,
+                            template:function(obj){
+                                var showLink = "<a href='view_transaction.php?id="+ obj.transaction_id +"'>View details</a>"
+                                return showLink;
+                            }
                         }
                     ],
-                    autowidth: true,
                     height: 500,
                     on:{
                         onBeforeLoad:function(){

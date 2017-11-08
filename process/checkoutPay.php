@@ -67,7 +67,7 @@
                         $dateNow = date_default_timezone_get();
                         $datetime = date('d/M/Y (D) h:i:sA');
                         $_SESSION["status"] = "success";
-                        echo "success $datetime";                        
+                        echo "success $datetime $insert_id";                        
                     }
                     else
                         echo "Something went wrong ! Please try again later.";
