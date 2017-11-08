@@ -120,8 +120,8 @@
                         </p>
                         <p><?php echo $product["product_desc"]; ?></p>
                         
-                        <h3>Size &amp; Colors</h3>
-                        <p>Weight of Product: <?php echo $product["product_weight"]; ?>kg</p>
+                        <h3>Weight of Product:</h3>
+                        <p><?php echo $product["product_weight"]; ?>kg</p>
                         
                         <h3>Shipping &amp; Policies</h3>
                         <p>
