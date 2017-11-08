@@ -9,21 +9,25 @@
 		<?php				
             if(!isset($_SESSION))
                 session_start();
-
-            if(!isset($_SESSION["login_user"]))
+        
+            if(!isset($_SESSION["login_user"]) )
                 header("location:index.php");
+        
+            if(!isset($_POST["checkedItemID"]) || $_POST["checkedItemID"] === "[]")
+                header("location:cart_view.php");
 		?>
 		<?php include_once "./include/NavigationBar.php" ?>
 		
-        <div class="content container">             
+        <div class="content container">     
             <div id='checkoutContainer'>          
                 <h1 class="page-header">Checkout</h1> 
                 <?php include_once "process/list_checkout.php" ?>
             </div>
             
             <div id="loading" style="text-align:center">
-                <img src="assets/images/payment_loadng.gif" style="width:100px; height:100px;"/>
+                <p><img src="assets/images/payment_loading.gif" style="width:100px; height:100px;"/></p>
                 <p>Processing payment... Please wait for a while...</p>
+                <p style="color:red;">Do not close this page when current payment transaction is processing</p>
             </div>  
             
             <div class='row' id="paymentSuccess">
@@ -59,10 +63,10 @@
                 $('#checkoutContainer').hide();
                 
                 webix.ajax().post('process/checkoutPay.php', { checkoutItem : <?php echo json_encode($checkout); ?> }, function (text, data) {
-                    console.log(text);
                     var response = text.split(" ");
                     if(response[0] === "success")                
-                        setTimeout(function(){                            
+                        setTimeout(function(){    
+                            //$("nav").load("include/navigation.php");
                             $("#paidDatetime").text(response[1] + " "+ response[2] + " " + response [3]);
                             $('#paymentSuccess').show();
                             $('#loading').hide();

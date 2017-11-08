@@ -1,8 +1,10 @@
 <?php
 	require "db_conn.php";
+    
 	// Check if all fields are set with value
     if( isset($_SESSION["login_user"]) && isset($_POST["checkedItemID"]) )
     {
+        $_SESSION["checkoutSession"] = date('d/M/Y (D) h:i:sA');
         $userid = $_SESSION["login_user"];
         $checkedItemID = $_POST["checkedItemID"];
         $checkedItemID = json_decode($checkedItemID);
@@ -39,11 +41,11 @@
             echo 
             "
                 <div class='row'>
-                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Product Image</div>
-                    <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 cartHeader' style='margin-top:0px'>Product Name</div>
-                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Price</div>
-                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Quantity</div>
-                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 cartHeader' style='margin-top:0px'>Subtotal</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 checkoutHeader' style='margin-top:0px'>Product Image</div>
+                    <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 checkoutHeader' style='margin-top:0px'>Product Name</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 checkoutHeader' style='margin-top:0px'>Price</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 checkoutHeader' style='margin-top:0px'>Quantity</div>
+                    <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 checkoutHeader' style='margin-top:0px'>Subtotal</div>
                 </div>
                 <hr/>
             ";
@@ -96,8 +98,6 @@
                 </p>
             ";
 		}
-        else
-            header("location:index.php");
 		
 		mysqli_close($conn);
 	}
