@@ -51,9 +51,13 @@
                 "
                     <div class='row'>
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
-                            <img style='width:100px; heigh:100px;' src='$product_image' alt='Picture of $product_image'/>
+                            <a href='product_details.php?id=$product_id' class='productLink'>                        
+                                <img style='width:100px; heigh:100px;' src='$product_image' alt='Picture of $product_image'/>
+                            </a>
                         </div>                        
-                        <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3'>$product_name</div>
+                        <div class='col-sm-3 col-xs-3 col-md-3 col-lg-3 alignCenter'>                        
+                            <a href='product_details.php?id=$product_id' class='productLink'>$product_name</a>
+                        </div>
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_price</div>						
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_stockQty</div>
                         <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>                                

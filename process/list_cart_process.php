@@ -47,12 +47,18 @@
                     "
                     <div class='row'>
                         <div class='col-sm-1 col-xs-1 col-md-1 col-lg-1 alignCenter'><input type='checkbox' name='$product_id' id='checkbox_$product_id' value='$total_amount' onclick='sumTotal(this.value,this.id)'/></div>
-                        <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'><img class='list-group-image cartProductImg' src='$product_image' alt='Picture of $product_name' /></div>
-                        <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_name</div>
+                        <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
+                            <a href='product_details.php?id=$product_id' class='productLink'>
+                            <img class='list-group-image cartProductImg' src='$product_image' alt='Picture of $product_name' />
+                            </a>
+                        </div>
+                        <div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
+                            <a href='product_details.php?id=$product_id' class='productLink'>$product_name</a>
+                        </div>
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>$product_price</div>						
 						<div class='col-sm-2 col-xs-2 col-md-2 col-lg-2 alignCenter'>
-							<div class='input-group'>
-                                <span class='input-group-btn'>";
+                        <div class='input-group'>
+                            <span class='input-group-btn'>";
                         if($product_quantity <= 1)
                             echo
                             "

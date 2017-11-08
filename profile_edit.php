@@ -117,7 +117,7 @@
                             rows: [
                                 { template:"Confirmation", type:"section" },
                                 { cols:[
-                                        { view:"text", label:"Verificiation code", type:"text", name:"verification_code", invalidMessage:"* Invalid Verification Code" },
+                                        { view:"text", label:"Verification code", type:"text", name:"verification_code", invalidMessage:"* Invalid Verification Code" },
                                         { view:"button", value:"Send verification code", width: 250,
                                             click:function(){
                                                 webix.ajax().post("process/verification_number_process.php", $$("profile_edit").getValues(),
