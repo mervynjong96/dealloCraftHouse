@@ -103,11 +103,9 @@
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
 				var currentVal = parseInt(input_field.val());
-<<<<<<< HEAD
+
 				//alert(-(maxQuantity - currentVal))  
-=======
-                
->>>>>>> origin/master
+
                 currentVal++;
                 var addBtn = document.getElementById("plus_button_"+product_id);
                 if(-(maxQuantity - currentVal) >= maxQuantity)
