@@ -10,6 +10,7 @@
         $checkedItemID = json_decode($checkedItemID);
         $checkedItemID = implode (", ", $checkedItemID);
         
+        
         // Get user's shipping address
 		$sql_table = "userinfo";
         $query = " SELECT name, contact_number, shipping_address from $sql_table where userid = '$userid'";   
@@ -52,6 +53,7 @@
             $checkoutTotalAmount = 0;
             while($result_products = mysqli_fetch_assoc($result))        
             {
+                // For each successive fetched product, store the following details to be displayed into views:
                 $product_id           =   $result_products["product_id"];
                 $img_dir              =   "./assets/images/products/" . $product_id;
                 $product_image        =   glob("$img_dir/a.*", GLOB_BRACE)[0];
@@ -60,7 +62,13 @@
                 $product_quantity     =   $result_products["product_quantity"];
                 $total_amount         =   number_format((float)($product_price * $product_quantity),2,'.','');
                 $checkoutTotalAmount  += $total_amount;
-                    
+                
+                /* Explicitly for debugging usage only 
+                $result_products["subtotal"] = $total_amount;
+                $debugItem = $result_products;
+                $debugItem = json_encode($result_products);
+                echo "<script type='text/javascript'>console.log($debugItem);</script>"; */
+                
                 echo 
                 "
                     <div class='row'>
@@ -75,8 +83,8 @@
                     <hr/>
                 ";
                 
-                $checkout[$product_id]['quantity'] = $product_quantity;
-                $checkout[$product_id]['price'] = $product_price;
+                $checkout[$product_id]['quantity']  = $product_quantity;
+                $checkout[$product_id]['price']     = $product_price;
             }
             
             $checkout['totalAmount'] = $checkoutTotalAmount;

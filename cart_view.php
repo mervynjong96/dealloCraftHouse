@@ -85,19 +85,7 @@
 				typeTimeout = setTimeout(function() {                    
 				    runUpdate(product_id,currentVal,maxQuantity);                    
                 }, 1000);
-				//var plus_button = document.getElementById("plus_button_"+product_id);
-								
-				//if(currentVal>1){
-					/*if(plus_button.disabled){
-						plus_button.disabled = false;
-					}*/
-				//}
-				
-				/*if(currentVal <=1){
-					document.getElementById(button_id).disabled = true;
-				}*/
-				
-				//updateInput(field_id,product_id,maxQuantity);
+                
 			}
 			
 			function addQuantity(product_id,button_id,maxQuantity)
@@ -107,7 +95,7 @@
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
 				var currentVal = parseInt(input_field.val());
-//alert(-(maxQuantity - currentVal))  
+                
                 currentVal++;
                 var addBtn = document.getElementById("plus_button_"+product_id);
                 if(-(maxQuantity - currentVal) >= maxQuantity)
@@ -120,19 +108,7 @@
 				typeTimeout = setTimeout(function() {
 				    runUpdate(product_id,currentVal,maxQuantity);                    
                 }, 1000);
-								
-				//if(currentVal<maxQuantity){
-					/*if(minus_button.disabled){
-						minus_button.disabled = false;
-					}*/
-				//}
-				
-				/*if(currentVal >=maxQuantity){
-					document.getElementById(button_id).disabled  = true;
-					
-				}*/
-				
-				//updateInput(field_id,product_id,maxQuantity);
+                
 			}
 			
 			function updateInput(field_id,product_id,maxQuantity)
@@ -145,32 +121,7 @@
                 if(Number.isInteger(currentVal))
                     runUpdate(product_id,currentVal,maxQuantity);
                 else
-                    document.getElementsByClassName("invalidMsg")[0].innerHTML= "Only integers and numeric value are allowed";
-                
-                
-				/*if(Number.isInteger(currentVal)){
-					if(currentVal < 1){
-						currentVal = 1;
-						input_field.val(currentVal);
-						runUpdate(product_id,currentVal,maxQuantity);
-						if(plus_button.disabled){
-							plus_button.disabled = false;
-						}
-						
-						minus_button.disabled = true;
-						
-						
-						
-					}else if(currentVal > maxQuantity){
-						
-						runUpdate(product_id,currentVal,maxQuantity);
-					
-					}else if(currentVal >= 1 && currentVal <=maxQuantity){
-						
-						runUpdate(product_id,currentVal,maxQuantity);
-						
-					}
-				}*/
+                    document.getElementsByClassName("invalidMsg")[0].innerHTML= "Only integers and numeric value are allowed";                
 			}
 			
 			
@@ -230,6 +181,8 @@
                         checkedItemID.push($(this)[0].name);
                     }
                 });
+                
+                console.log(checkedItemID);                
                 
                 // And POST the selected item ID and redirect to checkout page
                 webix.send('checkout.php', { checkedItemID: JSON.stringify(checkedItemID) }, "post");
