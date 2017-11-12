@@ -38,6 +38,7 @@
                     });
                     
                     <?php
+						//Retrieve information from database and pre-filled the form
                         require "process/db_conn.php";
                         $sql_table = "account";
                         $query = "SELECT * FROM $sql_table WHERE userid = '$_SESSION[login_user]' AND email =  '$_SESSION[login_email]'";
@@ -177,6 +178,7 @@
                                                                 }
                                                             }
                                                         },
+									//form validations
                                     "matchPassword"     : function(value){ return this.getValues().password === value },
                                     "fname"             : function(value,data,name){ return validateName(value,data,name,this) },
                                     "lname"             : function(value,data,name){ return validateName(value,data,name,this) },
@@ -198,7 +200,11 @@
 
                         $$("phone_code").setValue(phoneCode.dialling_code);
                     });
-
+					
+					
+					/* Submit update account information form through ajax
+					expected result: Profile Saved Successfully!
+					display and redirect user back to profile.php once receives the expected result */
                     function submit(){
                         var profile_edit = $$("profile_edit");
                         if(profile_edit.validate())	{
@@ -211,6 +217,7 @@
                         }
                     }
                     
+					//Redirect user to profile.php once the cancel button is pressed
                     function cancel(){
                         window.location.replace("profile.php");
                     }

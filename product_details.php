@@ -210,6 +210,7 @@
 		
 		<script>		
 			
+			// Decrease the item quantity field once "-" button is pressed, will not decrease when it is 1
 			function minusQuantity(product_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
@@ -232,6 +233,7 @@
 				
 			}
 			
+			// Increase the item quantity field once "+" button is pressed, will not decrease when it reaches the maximum quantity
 			function addQuantity(product_id,button_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
@@ -255,6 +257,8 @@
 				
 			}
 			
+			// run the add query through ajax
+			// expected result : Item has added to the cart
 			function addToCart(product_id,maxQuantity){
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id +"']");
@@ -311,6 +315,7 @@
 				}
 			}*/
 			
+			//Switch the image when the thumbnail is clicked and style the current displayed image on the thumbnail section
 			$(".thumbnail_image").click(function(){
 					$('#indexImage').attr('src',this.src);
 					$('.selected').removeClass('selected');

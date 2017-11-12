@@ -33,6 +33,7 @@
 		<?php include_once "./include/Footer.php" ?>
 		
 		<script>
+			// if cart is not empty then prefilled the total with 0.00
 			if(document.getElementById("total_price") !== null)
             {
 				var typeTimeout;			
@@ -40,6 +41,8 @@
 				document.getElementById("total_price").innerHTML=total;
 			}
 			
+			// remove items by updating through ajax and reload if expected result is returned
+			// expected result:Remove item successfully
 			function removeItem(product_id)
             {
 				webix.confirm({
@@ -65,6 +68,8 @@
 				});
 			}
 			
+			//Decrease the item quantity value and run the update within 1 second
+			//button is disabled if item quantity reached 1
 			function minusQuantity(product_id,button_id,maxQuantity)
             {
 				clearTimeout(typeTimeout);                
@@ -100,6 +105,9 @@
 				//updateInput(field_id,product_id,maxQuantity);
 			}
 			
+			
+			//Increase the item quantity value and run the update within 1 second
+			//button is disabled if maximum quantity is reached
 			function addQuantity(product_id,button_id,maxQuantity)
             {
 				clearTimeout(typeTimeout);
@@ -107,7 +115,7 @@
 				var field_id = "product_quantity_" + product_id;
 				var input_field = $("input[name='"+ field_id + "']");
 				var currentVal = parseInt(input_field.val());
-//alert(-(maxQuantity - currentVal))  
+				//alert(-(maxQuantity - currentVal))  
                 currentVal++;
                 var addBtn = document.getElementById("plus_button_"+product_id);
                 if(-(maxQuantity - currentVal) >= maxQuantity)
@@ -135,6 +143,7 @@
 				//updateInput(field_id,product_id,maxQuantity);
 			}
 			
+			//check if its numeric value before run the update script
 			function updateInput(field_id,product_id,maxQuantity)
             {				
 				var input_field = $("input[name='"+ field_id +"']");
@@ -191,6 +200,8 @@
                 })
 			}			
 			
+			// sum all the price of checked item in the cart
+			//expected result: the total value is equal to the sum of price of all checked item
 			function sumTotal(value,product_id)
             {
                 // Count the number of checked item
@@ -220,6 +231,7 @@
 				}
 			}
             
+			// send the selected item id to the checkout.php 
 			function checkout()
             {
                 // Get selected item ID
